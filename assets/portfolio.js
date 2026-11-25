@@ -32,7 +32,7 @@ function showView(view, anchor, focusHeading) {
     document.title = view.id === "home"
       ? homeTitle
       : view.dataset.pageTitle + " | Mollie Sambrook · The Art of Being Noticed";
-    const current = view.id === "case-cold-feet" ? "work" : view.id;
+    const current = view.dataset.section || view.id;
     for (const link of navigation) {
       if (link.hash === "#" + current) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
@@ -51,6 +51,11 @@ function navigate(initial = false) {
   const anchor = document.getElementById(location.hash.slice(1));
   if (anchor === main && activeView) return; // Native skip link.
   const view = anchor?.closest(".view") || views[0];
+  const forward = anchor?.dataset.forward || view.dataset.forward;
+  if (forward) {
+    location.replace(forward);
+    return;
+  }
   const nestedAnchor = anchor && view.contains(anchor) ? anchor : null;
   const update = () => showView(view, nestedAnchor, !initial);
   transition?.skipTransition();
