@@ -161,7 +161,8 @@ def project_case(entry):
         if "{{KEYWORD_STRATEGY}}" in content:
             content = content.replace("{{KEYWORD_STRATEGY}}", render_keyword_strategy(ROOT))
         if "{{CONTENT_STRATEGY}}" in content:
-            content = content.replace("{{CONTENT_STRATEGY}}", render_content_strategy(ROOT))
+            for marker, section in render_content_strategy(ROOT).items():
+                content = content.replace("{{" + marker + "}}", section)
         return content
     skills = "".join(f'<li>{escape(skill)}</li>' for skill in entry["skills"])
     links = "".join(f'<li><a href="{external_url(link["url"])}">{escape(link["label"])}</a></li>'

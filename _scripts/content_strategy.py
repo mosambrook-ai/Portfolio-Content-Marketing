@@ -47,12 +47,29 @@ def facts(pairs):
     return definition([(label, escape(value)) for label, value in pairs if value], "kw-facts")
 
 
+PERSONA_DETAILS = {
+    "Literary Romantic": ("Literary work that resonates with how they feel", "Prints and journal", "Poetry and illustrated films"),
+    "Aspiring Writer": ("Ideas and routines that make it easier to start writing", "Journal and desk mat", "Prompts and writing rituals"),
+    "Cultural Reader": ("Writing that offers connection and representation", "No product assigned in the workbook", "Essays and literary commentary"),
+    "Thoughtful Gifter": ("A gift with personal meaning and clear buying information", "Prints, journal and desk mat in the proposed reader gift guide", "Gift guides and product demonstrations"),
+}
+
+PILLAR_DESCRIPTIONS = {
+    "Words worth keeping": "Give readers a line or image they want to keep or share.",
+    "Behind the words": "Show how the writing and design take shape.",
+    "Between the lines": "Make space for longer ideas about identity and literary culture.",
+    "Objects with meaning": "Show how the writing carries through to a gift or an object.",
+    "Notes from the margins": "Give readers a reason to stay in touch with the studio.",
+}
+
+
 def personas(rows):
     cards = []
     for index, row in enumerate(rows):
+        needs, products, preferences = PERSONA_DETAILS[row["name"]]
         fields = facts([
-            ("Motivation", row["motivation"]), ("Barrier", row["barrier"]),
-            ("Preferred channels", row["channels"]), ("Content and relevant products", row["content"]),
+            ("Motivation", row["motivation"]), ("Audience need", needs), ("Purchase barrier", row["barrier"]),
+            ("Preferred channels", row["channels"]), ("Relevant products", products), ("Content preferences", preferences),
             ("Search opportunity", row["search"]),
         ])
         cards.append(disclosure("The " + escape(row["name"]), fields, "cs-personas", index == 0))
@@ -66,12 +83,12 @@ def pillars(rows):
     cards = "".join(
         disclosure(
             f'{escape(row["name"])} <span class="cs-score">{row["share"]:.0%}</span>',
-            facts([("Objective", row["objective"]), ("Formats", row["formats"]), ("Example", row["example"])]),
+            facts([("What it does", PILLAR_DESCRIPTIONS[row["name"]]), ("Objective", row["objective"]), ("Formats", row["formats"]), ("Example", row["example"])]),
             "cs-pillars",
         )
         for row in rows
     )
-    return f'<div class="cs-mix" aria-hidden="true">{bar}</div><div class="cs-disclosures">{cards}</div>'
+    return f'<div class="cs-pillars"><div class="cs-mix" aria-hidden="true">{bar}</div><div class="cs-disclosures">{cards}</div></div>'
 
 
 def audience_matrix(data):
@@ -97,12 +114,20 @@ def audience_matrix(data):
 
 
 def journey(rows):
+    channels = {
+        "Discovery": "TikTok and Pinterest", "Connection": "Social and the Journal",
+        "Exploration": "Website Journal and shop", "Consideration": "Shop and email",
+        "Conversion": "Online shop", "Retention": "Email and the Journal",
+    }
     items = "".join(
-        f'<li><strong>{escape(row["stage"])}</strong>'
-        + facts([("Touchpoint", row["touchpoint"]), ("Intended action", row["action"]), ("Indicator", row["kpi"])])
-        + '</li>' for row in rows
+        '<li>' + disclosure(
+            f'<span class="journey-number">{i:02}</span> {escape(row["stage"])}',
+            facts([("Channels", channels[row["stage"]]), ("Touchpoint", row["touchpoint"]),
+                   ("Intended action", row["action"]), ("Indicator", row["kpi"])]),
+            "cs-journey-stage",
+        ) + '</li>' for i, row in enumerate(rows, 1)
     )
-    return f'<ol class="cs-journey">{items}</ol>'
+    return f'<ol class="cs-journey cs-disclosures">{items}</ol>'
 
 
 def campaigns(data):
@@ -120,8 +145,8 @@ def campaigns(data):
         content = (
             f'<div class="cs-campaign"><figure><img src="assets/images/{path}" width="{width}" height="{height}"'
             f' loading="lazy" decoding="async" alt="{escape(alt)}"><figcaption>Existing creative reference</figcaption></figure>'
-            f'<div>{facts([("Known state", asset["state"]), ("Next action", asset["action"])])}'
-            '<ol class="cs-adaptations">'
+            f'<div>{facts([("Existing work", asset["state"]), ("Next action", asset["action"])])}'
+            '<p class="kw-note">Channel adaptations and product links</p><ol class="cs-adaptations">'
             + "".join(f'<li><strong>{escape(channel)}</strong><span>{escape(idea)}</span></li>' for channel, idea in flow)
             + '</ol></div></div>'
         )
@@ -176,7 +201,8 @@ def calendar(data):
         f'<label>Channel<select name="channel">{options(channels)}</select></label>'
         f'<label>Pillar<select name="pillar">{options(row["name"] for row in data["pillars"])}</select></label>'
         '</div><p class="kw-note cs-calendar-status" role="status" hidden></p>'
-        '<div class="cs-weeks cs-disclosures">' + "".join(sections) + '</div></div>'
+        '<div class="cs-weeks cs-disclosures">' + "".join(sections) + '</div>'
+        '<section class="cs-day-panel" aria-label="Selected calendar date" hidden><p class="cs-day-title"></p><ul class="cs-agenda"></ul></section></div>'
     )
 
 
@@ -199,21 +225,21 @@ def measurement(rows):
 
 def render_content_strategy(root):
     data = json.loads((root / "_data/content-strategy.json").read_text(encoding="utf-8"))
-    parts = {
-        "METRICS": definition([
-            ("Proposed audience personas", str(len(data["personas"]))),
-            ("Content pillars", str(len(data["pillars"]))),
-            ("Days of editorial planning", str(len({row["date"] for row in data["calendar"]}))),
-        ], "kw-metrics"),
-        "PERSONAS": personas(data["personas"]),
-        "PILLARS": pillars(data["pillars"]),
-        "MATRIX": audience_matrix(data),
-        "JOURNEY": journey(data["journey"]),
-        "CAMPAIGNS": campaigns(data),
-        "CALENDAR": calendar(data),
-        "KPIS": measurement(data["kpis"]),
+    sections = {
+        "CONTENT_STRATEGY": ("content-strategy", {
+            "PILLARS": pillars(data["pillars"]),
+            "MATRIX": audience_matrix(data),
+            "JOURNEY": journey(data["journey"]),
+            "CAMPAIGNS": campaigns(data),
+            "CALENDAR": calendar(data),
+        }),
+        "AUDIENCE_STRATEGY": ("audience-strategy", {"PERSONAS": personas(data["personas"])}),
+        "MEASUREMENT_STRATEGY": ("measurement-strategy", {"KPIS": measurement(data["kpis"])}),
     }
-    template = (root / "_content/cases/content-strategy.html").read_text(encoding="utf-8")
-    for key, value in parts.items():
-        template = template.replace("{{" + key + "}}", value)
-    return template
+    output = {}
+    for marker, (name, parts) in sections.items():
+        template = (root / f"_content/cases/{name}.html").read_text(encoding="utf-8")
+        for key, value in parts.items():
+            template = template.replace("{{" + key + "}}", value)
+        output[marker] = template
+    return output

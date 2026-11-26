@@ -289,3 +289,68 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
   .kw-priorities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.35rem;max-width:none}
   .kw-scatter{width:min(100%,38rem)}
 }
+
+/* Editorial chapters and compact supporting research */
+.case-chapter{padding:3.6rem 0 1rem;border-bottom:1px solid var(--line)}
+.chapter-heading{margin:0 0 1.6rem}
+.chapter-heading .case-section-title{font-size:clamp(2.7rem,7.5vw,6rem);max-width:18ch;margin:.25rem 0 0}
+.chapter-intro{max-width:48rem}
+.chapter-part{margin:1.8rem 0 0}
+.chapter-subtitle{margin:0 0 .9rem}
+.chapter-journal{display:grid;gap:1rem}
+.chapter-journal>div{border-top:1px solid var(--line);padding-top:.65rem}
+.chapter-journal p{margin:.35rem 0}
+.case-skills{display:flex;flex-wrap:wrap;gap:.25rem .8rem;list-style:none;padding:0;margin:.8rem 0;font:400 .83rem/1.55 var(--m);color:var(--soft)}
+.case-skills li{border-bottom:1px solid var(--line)}
+.case-overview #project-overview{font-size:clamp(2.3rem,5vw,4.75rem)}
+.chapter-bar{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:.55rem 1rem;background:var(--sheet);border-block:1px solid var(--line);padding:.3rem .75rem}
+.chapter-bar nav ol{display:flex;flex-wrap:wrap;gap:.25rem .9rem;list-style:none;padding:0;margin:0}
+.chapter-bar :is(a,summary){display:inline-flex;align-items:center;min-height:2.4rem;gap:.25rem;padding:.1rem .2rem;color:var(--wine);font:400 .82rem/1.35 var(--m)}
+.chapter-bar a[aria-current="location"]{background:var(--wine);color:var(--paper);text-decoration-color:currentColor}
+.chapter-bar .chapter-top{margin-left:auto;text-align:right}
+.chapter-index{font-size:.68rem}
+.chapter-mobile{display:none}
+.chapter-bar summary:focus-visible,.cs-date-grid button:focus-visible,.cs-mix button:focus-visible,.cs-journey summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px var(--lime)}
+.cfe [id][tabindex="-1"]{scroll-margin-top:4.7rem}
+.cfe #project-overview{scroll-margin-top:1rem}
+#chapter-audience .keyword-strategy,#s08 .content-strategy{margin-top:1.45rem;padding-top:1.2rem}
+.content-strategy,.measurement-strategy{margin-top:1.8rem}
+.content-strategy > h5,.content-strategy > h4:not(#content-strategy){margin:1.8rem 0 .55rem}
+.content-strategy #content-strategy{margin-bottom:.6rem}
+.audience-strategy{padding-top:1.1rem}
+.cs-pillars .cs-mix{height:.8rem}
+.cs-mix button{flex:0 1 var(--share);border:0;border-radius:0;padding:0;background:var(--wine);cursor:pointer;position:relative;min-width:0}
+.cs-mix button:nth-child(2){background:#714350}.cs-mix button:nth-child(3){background:#8b5965}
+.cs-mix button:nth-child(4){background:#a4757e}.cs-mix button:nth-child(5){background:#bc939a}
+.cs-mix button::after{content:"";position:absolute;inset:-6px 0}
+.cs-mix button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--ink)}
+.cs-journey{list-style:none;padding:0;gap:.6rem}
+.cs-journey li{padding:0;border:0}
+.cs-journey details{border-top:1px solid var(--wine)}
+.cs-journey .kw-facts{grid-template-columns:1fr;padding:.35rem .35rem .65rem}
+.journey-number{display:block;color:var(--soft);font:400 .75rem/1.35 var(--m)}
+.cs-date-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(2.35rem,1fr));gap:.25rem}
+.cs-date-grid button{min-height:2.4rem;padding:.15rem;border:1px solid var(--line);border-radius:0;color:var(--wine);background:var(--sheet);font:400 .88rem var(--m);cursor:pointer}
+.cs-date-grid button.is-production{border-bottom:2px dotted var(--wine)}
+.cs-date-grid button[aria-pressed="true"]{background:var(--wine);color:var(--paper);border-color:var(--wine)}
+.cs-date-grid button:disabled{opacity:.45;cursor:default}
+.cs-day-panel{padding:.65rem 0 .3rem;border-block:1px solid var(--line)}
+.cs-day-title{color:var(--wine);font-weight:600;margin:0 0 .4rem}
+.cs-adaptations{border-left:1px solid var(--line);padding-left:.75rem}
+.cs-campaign img{max-height:16rem}
+@media(min-width:45rem){
+  .chapter-journal{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .cs-journey{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(min-width:66rem){
+  .cs-journey{grid-template-columns:repeat(6,minmax(0,1fr))}
+}
+@media(max-width:55rem){
+  .chapter-desktop{display:none}
+  .chapter-mobile{display:block;position:relative}
+  .chapter-mobile summary{cursor:pointer}
+  .chapter-mobile nav{position:absolute;top:100%;left:-.25rem;width:min(16rem,70vw);max-height:65vh;overflow:auto;background:var(--sheet);border:1px solid var(--line);padding:.35rem}
+  .chapter-mobile nav ol{display:grid;gap:0}
+  .chapter-mobile nav a{display:flex}
+}
+@media(max-width:44.99rem){.cs-journey{grid-template-columns:1fr}}
