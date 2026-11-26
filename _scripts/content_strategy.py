@@ -38,9 +38,10 @@ CAMPAIGNS = {
 }
 
 
-def disclosure(label, content, group=None, opened=False):
+def disclosure(label, content, group=None, opened=False, anchor=None):
     name = f' name="{group}"' if group else ""
-    return f'<details{name}{" open" if opened else ""}><summary>{label}</summary>{content}</details>'
+    target = f' id="{escape(anchor)}" data-open-disclosure' if anchor else ""
+    return f'<details{name}{" open" if opened else ""}><summary{target}>{label}</summary>{content}</details>'
 
 
 def facts(pairs):
@@ -85,6 +86,7 @@ def pillars(rows):
             f'{escape(row["name"])} <span class="cs-score">{row["share"]:.0%}</span>',
             facts([("What it does", PILLAR_DESCRIPTIONS[row["name"]]), ("Objective", row["objective"]), ("Formats", row["formats"]), ("Example", row["example"])]),
             "cs-pillars",
+            anchor="pillar-" + row["name"].lower().replace(" ", "-"),
         )
         for row in rows
     )

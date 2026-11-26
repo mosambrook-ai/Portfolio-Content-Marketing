@@ -39,6 +39,7 @@ function showView(view, anchor, focusHeading) {
     }
   }
   if (anchor && anchor !== view) {
+    if (anchor.hasAttribute("data-open-disclosure")) anchor.parentElement.open = true;
     anchor.focus({preventScroll: true});
     anchor.scrollIntoView();
   } else if (focusHeading) {

@@ -163,6 +163,20 @@ def project_case(entry):
         if "{{CONTENT_STRATEGY}}" in content:
             for marker, section in render_content_strategy(ROOT).items():
                 content = content.replace("{{" + marker + "}}", section)
+        for marker, template in (
+            ("CREATIVE_SHOWCASE", "creative-showcase"),
+            ("STOREFRONT_EVIDENCE", "storefront-evidence"),
+            ("NEWSLETTER_EVIDENCE", "newsletter-evidence"),
+        ):
+            if "{{" + marker + "}}" not in content:
+                continue
+            fragment = (ROOT / f"_content/cases/{template}.html").read_text(encoding="utf-8")
+            if "{{POETRY_METRICS}}" in fragment:
+                terms = json.loads((ROOT / "_data/keyword-research.json").read_text(encoding="utf-8"))["keywords"]
+                poetry = next(row for row in terms if row["term"] == "poetry gifts")
+                metrics = f'{poetry["volume"]:,} monthly searches and {poetry["difficulty"]:.0%} keyword difficulty'
+                fragment = fragment.replace("{{POETRY_METRICS}}", metrics)
+            content = content.replace("{{" + marker + "}}", fragment)
         return content
     skills = "".join(f'<li>{escape(skill)}</li>' for skill in entry["skills"])
     links = "".join(f'<li><a href="{external_url(link["url"])}">{escape(link["label"])}</a></li>'

@@ -398,10 +398,37 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 }
 @media(max-width:55rem){
   .chapter-desktop{display:none}
-  .chapter-mobile{display:block;position:relative}
-  .chapter-mobile summary{cursor:pointer}
+  .chapter-mobile{display:block;position:relative;min-width:0}
+  .chapter-mobile summary{cursor:pointer;flex-wrap:wrap}
   .chapter-mobile nav{position:absolute;top:100%;left:-.25rem;width:min(16rem,70vw);max-height:65vh;overflow:auto;background:var(--sheet);border:1px solid var(--line);padding:.35rem}
   .chapter-mobile nav ol{display:grid;gap:0}
   .chapter-mobile nav a{display:flex}
 }
 @media(max-width:44.99rem){.cs-journey{grid-template-columns:1fr}}
+
+/* Chapter 05 campaign evidence and live storefront comparisons */
+.case-chapter .creative-subtitle{margin:calc(-1 * var(--note-space)) 0 var(--content-space)}
+.creative-index{display:flex;flex-wrap:wrap;gap:.4rem 1rem;list-style:none;padding:0;margin:var(--content-space) 0;font:400 .85rem/1.55 var(--m)}
+.creative-index li{min-width:0}
+.creative-gallery,.creative-evidence-pair{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--content-space)}
+.creative-entry{min-width:0;border-top:1px solid var(--line);padding-top:var(--content-space)}
+.case-chapter .creative-title{font-size:var(--section-type);line-height:1.18;margin:var(--note-space) 0}
+.creative-entry .kw-kicker{margin:0}
+.creative-entry figure,.creative-evidence-pair figure,.storefront-evidence figure{min-width:0}
+.creative-entry figure img,.creative-evidence-pair img,.storefront-lead img{display:block;width:100%;height:auto}
+.creative-entry > figure.creative-portrait img{max-height:25rem;object-fit:contain;object-position:left center}
+.creative-entry > figure + .kw-note{margin:var(--note-space) 0 0}
+.creative-evidence-pair{margin:var(--content-space) 0;align-items:start}
+.creative-evidence-pair figure > a,.storefront-lead > a{display:block}
+.creative-flow{padding-inline-start:1.35rem;margin:var(--note-space) 0;color:var(--wine)}
+.storefront-evidence{margin-top:var(--subsection-space)}
+.storefront-evidence .storefront-lead{max-width:56rem}
+.storefront-lead + .case-evidence{margin-top:var(--content-space)}
+.newsletter-evidence .sub{margin:0 0 var(--content-space)}
+.cfe summary[data-open-disclosure]{scroll-margin-top:5rem}
+@media(min-width:40rem){
+  .creative-evidence-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:53rem){
+  .creative-gallery{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(1.5rem,4vw,3.5rem);row-gap:var(--heading-space)}
+}
