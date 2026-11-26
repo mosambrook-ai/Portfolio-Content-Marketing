@@ -10,7 +10,7 @@ from urllib.parse import urlsplit
 from xml.etree.ElementTree import Element, SubElement, tostring
 
 from content_strategy import render_content_strategy
-from keyword_strategy import render_keyword_strategy
+from keyword_strategy import definition, render_keyword_strategy
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://mosambrook-ai.github.io/Portfolio-Content-Marketing/"
@@ -146,6 +146,18 @@ def writing_feature(entry):
 def project_case(entry):
     content = body(entry)
     if entry.get("custom_case"):
+        if "{{PROJECT_OVERVIEW}}" in content:
+            keywords = json.loads((ROOT / "_data/keyword-research.json").read_text(encoding="utf-8"))["keywords"]
+            strategy = json.loads((ROOT / "_data/content-strategy.json").read_text(encoding="utf-8"))
+            deliverables = definition([
+                ("Recovered keywords", str(len({row["term"] for row in keywords}))),
+                ("Proposed audience personas", str(len(strategy["personas"]))),
+                ("Content pillars", str(len(strategy["pillars"]))),
+                ("Days of content planning", str(len({row["date"] for row in strategy["calendar"]}))),
+            ], "kw-metrics")
+            overview = (ROOT / "_content/cases/project-overview.html").read_text(encoding="utf-8")
+            overview = overview.replace("{{TIMEFRAME}}", escape(entry["timeframe"])).replace("{{DELIVERABLES}}", deliverables)
+            content = content.replace("{{PROJECT_OVERVIEW}}", overview)
         if "{{KEYWORD_STRATEGY}}" in content:
             content = content.replace("{{KEYWORD_STRATEGY}}", render_keyword_strategy(ROOT))
         if "{{CONTENT_STRATEGY}}" in content:
