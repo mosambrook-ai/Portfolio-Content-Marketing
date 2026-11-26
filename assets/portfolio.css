@@ -498,3 +498,34 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .cs-pillar-selection>strong{color:var(--wine);font-size:1.18rem}
 .cs-pillar-selection .kw-facts{padding-inline:0}
 @media(min-width:43rem){.cs-mix-layout{grid-template-columns:minmax(0,22rem) minmax(0,1fr)}}
+
+/* Editorial audience profiles */
+.persona-experience{margin-top:var(--content-space)}
+.persona-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.25rem;border-bottom:1px solid var(--line);padding-bottom:.4rem}
+.persona-tabs button,.persona-profiles summary{font:500 clamp(.88rem,1.65vw,1.04rem)/1.3 "Playfair Display",Georgia,serif;color:var(--wine);cursor:pointer}
+.persona-tabs button{border:0;border-bottom:2px solid transparent;background:transparent;text-align:left;padding:.55rem .45rem;min-height:2.7rem}
+.persona-tabs button[aria-selected="true"]{background:var(--sheet);border-bottom-color:var(--wine)}
+.persona-tabs button:focus-visible,.persona-profiles summary:focus-visible,.persona-profile:focus-visible{outline:2px solid var(--wine);outline-offset:3px;box-shadow:none}
+.persona-profiles details{border-bottom:1px solid var(--line)}
+.persona-profiles summary{padding:.7rem .25rem}
+.persona-experience.is-enhanced .persona-profiles{display:grid}
+.persona-experience.is-enhanced .persona-profile{grid-area:1/1}
+.persona-profile[aria-hidden="true"]{visibility:hidden}
+.persona-profile{min-width:0;padding:clamp(.85rem,2.5vw,1.5rem) .25rem .9rem}
+.persona-profile-lead{display:grid;grid-template-columns:minmax(0,1fr);gap:.65rem 1.4rem;align-items:start}
+.persona-profile-lead:has(.persona-art){grid-template-columns:minmax(0,1fr) minmax(5rem,26%)}
+.persona-art img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
+.persona-profile .persona-label,.persona-facts dt,.persona-profile blockquote footer{font:400 .75rem/1.48 var(--m);text-transform:uppercase;letter-spacing:.04em;color:var(--wine)}
+.persona-profile .persona-label{margin:0 0 .3rem}
+.persona-profile h5,.persona-profile h4{font-size:var(--section-type);margin:0 0 .55rem;line-height:1.16}
+.persona-profile blockquote{border:0;padding:0;margin:0;color:var(--wine);font-style:italic}
+.persona-profile blockquote p{margin:0 0 .35rem}
+.persona-profile blockquote footer{border:0;margin:0;padding:0;font-style:normal}
+.persona-facts,.persona-decisions{display:grid;grid-template-columns:minmax(0,1fr);gap:.35rem 1.1rem;margin:.85rem 0 0}
+.persona-facts>div,.persona-decisions>div{min-width:0;border-top:1px solid var(--line);padding:.5rem 0}
+.persona-facts dd,.persona-decisions p{margin:.13rem 0 0}
+.persona-facts ul{margin:0;padding-inline-start:1.05rem}
+.persona-facts .persona-channels{display:flex;flex-wrap:wrap;gap:.2rem .65rem;list-style:none;padding:0}
+.persona-channels li{border-bottom:1px solid var(--line)}
+@media(min-width:35rem){.persona-facts,.persona-decisions{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:49rem){.persona-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}.persona-profile-lead:has(.persona-art){grid-template-columns:minmax(0,1fr) minmax(0,13rem)}}

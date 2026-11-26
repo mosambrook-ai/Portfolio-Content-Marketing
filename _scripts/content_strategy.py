@@ -64,17 +64,84 @@ PILLAR_DESCRIPTIONS = {
 }
 
 
-def personas(rows):
+PERSONA_PRESENTATION = {
+    "Literary Romantic": (
+        "I want to find words that feel like something I’ve lived.",
+        "Build recognition through original poetry and illustrated storytelling, then introduce the prints and journal.",
+        "literary gifts",
+        "An open poetry book with handwritten annotations and pressed flowers",
+    ),
+    "Aspiring Writer": (
+        "I’d like a small ritual that helps me start writing again.",
+        "Present the journal and desk mat as part of a writing ritual. Use prompts and process-led content to give readers a reason to return.",
+        "gifts for writers",
+        "An open journal, fountain pen and manuscript pages on a writing desk",
+    ),
+    "Cultural Reader": (
+        "I want to read work that gives me another way to see things.",
+        "Build editorial trust through thoughtful essays, literary discussion and independent creative voices.",
+        None,
+        "A stack of books beside reading glasses and annotated essays",
+    ),
+    "Thoughtful Gifter": (
+        "I want to give them something that feels chosen for them.",
+        "Use search-led gift guides to help readers choose a meaningful gift. Show what makes each product relevant and make buying information easy to find.",
+        "gifts for book lovers",
+        "A literary gift wrapped with a burgundy ribbon and gift tag",
+    ),
+}
+
+
+def personas(rows, keywords, root):
+    by_term = {row["term"]: row for row in keywords}
     cards = []
     for index, row in enumerate(rows):
-        needs, products, preferences = PERSONA_DETAILS[row["name"]]
-        fields = facts([
-            ("Motivation", row["motivation"]), ("Audience need", needs), ("Purchase barrier", row["barrier"]),
-            ("Preferred channels", row["channels"]), ("Relevant products", products), ("Content preferences", preferences),
-            ("Search opportunity", row["search"]),
-        ])
-        cards.append(disclosure("The " + escape(row["name"]), fields, "cs-personas", index == 0))
-    return '<div class="cs-disclosures">' + "".join(cards) + "</div>"
+        name = row["name"]
+        slug = name.lower().replace(" ", "-")
+        label = "The " + escape(name)
+        needs, products, preferences = PERSONA_DETAILS[name]
+        quote, response, term, alt = PERSONA_PRESENTATION[name]
+        keyword = by_term.get(term)
+        if keyword:
+            search = (
+                f'<strong>{escape(term.capitalize())}</strong><br>'
+                f'{keyword["volume"]:,} estimated UK searches/month · {keyword["difficulty"]:.0%} keyword difficulty'
+            )
+        else:
+            search = "Editorial-led discovery. The research did not establish a direct target keyword."
+        channels = "".join(f'<li>{escape(channel.strip())}</li>' for channel in row["channels"].split(";"))
+        image = f"assets/images/personas/{slug}.webp"
+        artwork = (
+            f'<figure class="persona-art"><img src="{image}" width="640" height="480" '
+            f'loading="lazy" decoding="async" alt="{escape(alt)}"></figure>'
+            if (root / image).is_file() else ""
+        )
+        fields = (
+            '<dl class="persona-facts">'
+            f'<div><dt>Core motivation</dt><dd>{escape(row["motivation"])}</dd></div>'
+            f'<div><dt>Audience needs</dt><dd><ul><li>{escape(needs)}</li></ul></dd></div>'
+            f'<div><dt>Purchase barrier</dt><dd>{escape(row["barrier"])}</dd></div>'
+            f'<div><dt>Preferred channels</dt><dd><ul class="persona-channels">{channels}</ul></dd></div>'
+            f'<div><dt>Relevant products</dt><dd>{escape(products)}</dd></div>'
+            f'<div><dt>Content preferences</dt><dd>{escape(preferences)}</dd></div>'
+            '</dl>'
+        )
+        content = f'''<div class="persona-profile" id="persona-{slug}">
+<div class="persona-profile-lead">
+<div><p class="persona-label">Proposed content effort · {row["share"]:.0%}</p>
+<h5 data-view-heading="4">{label}</h5>
+<blockquote><p>“{escape(quote)}”</p><footer>Illustrative persona statement</footer></blockquote></div>
+{artwork}
+</div>
+{fields}
+<div class="persona-decisions"><div><p class="persona-label">Search opportunity</p><p>{search}</p></div>
+<div><p class="persona-label">Strategic response</p><p>{escape(response)}</p></div></div>
+</div>'''
+        cards.append(disclosure(label, content, "cs-personas", index == 0))
+    return (
+        '<div class="persona-experience"><div class="persona-tabs" role="tablist" aria-label="Audience personas" hidden></div>'
+        '<div class="persona-profiles">' + "".join(cards) + "</div></div>"
+    )
 
 
 def pillars(rows):
@@ -242,6 +309,7 @@ def measurement(rows):
 
 def render_content_strategy(root):
     data = json.loads((root / "_data/content-strategy.json").read_text(encoding="utf-8"))
+    keywords = json.loads((root / "_data/keyword-research.json").read_text(encoding="utf-8"))["keywords"]
     sections = {
         "CONTENT_STRATEGY": ("content-strategy", {
             "PILLARS": pillars(data["pillars"]),
@@ -250,7 +318,7 @@ def render_content_strategy(root):
             "CAMPAIGNS": campaigns(data),
             "CALENDAR": calendar(data),
         }),
-        "AUDIENCE_STRATEGY": ("audience-strategy", {"PERSONAS": personas(data["personas"])}),
+        "AUDIENCE_STRATEGY": ("audience-strategy", {"PERSONAS": personas(data["personas"], keywords, root)}),
         "MEASUREMENT_STRATEGY": ("measurement-strategy", {"KPIS": measurement(data["kpis"])}),
     }
     output = {}

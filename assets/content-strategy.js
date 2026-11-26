@@ -148,3 +148,53 @@ for (const bar of document.querySelectorAll(".chapter-bar")) {
   window.addEventListener("hashchange", schedule);
   schedule();
 }
+
+for (const experience of document.querySelectorAll(".persona-experience")) {
+  const tablist = experience.querySelector(".persona-tabs");
+  const profiles = experience.querySelector(".persona-profiles");
+  const entries = [...profiles.querySelectorAll("details")].map(disclosure => {
+    const panel = disclosure.querySelector(".persona-profile");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.id = panel.id + "-tab";
+    button.textContent = disclosure.querySelector("summary").textContent;
+    button.setAttribute("role", "tab");
+    button.setAttribute("aria-controls", panel.id);
+    panel.setAttribute("role", "tabpanel");
+    panel.setAttribute("aria-labelledby", button.id);
+    disclosure.replaceWith(panel);
+    tablist.append(button);
+    return {button, panel};
+  });
+
+  function activate(index, focus = false) {
+    for (const [i, {button, panel}] of entries.entries()) {
+      const active = i === index;
+      button.tabIndex = active ? 0 : -1;
+      button.setAttribute("aria-selected", String(active));
+      panel.toggleAttribute("inert", !active);
+      panel.setAttribute("aria-hidden", String(!active));
+      panel.tabIndex = active ? 0 : -1;
+    }
+    if (focus) entries[index].button.focus();
+  }
+
+  for (const [index, {button}] of entries.entries()) {
+    button.addEventListener("click", () => activate(index));
+    button.addEventListener("keydown", event => {
+      const last = entries.length - 1;
+      const targets = {
+        ArrowRight: (index + 1) % entries.length,
+        ArrowLeft: (index + last) % entries.length,
+        Home: 0,
+        End: last,
+      };
+      if (!(event.key in targets)) return;
+      event.preventDefault();
+      activate(targets[event.key], true);
+    });
+  }
+  activate(0);
+  experience.classList.add("is-enhanced");
+  tablist.hidden = false;
+}
