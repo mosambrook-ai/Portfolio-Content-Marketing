@@ -136,7 +136,7 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .keyword-strategy{margin-top:3.5rem;padding:2.25rem 0 0;border-top:1px solid var(--wine);overflow-wrap:anywhere}
 .keyword-strategy :is(h3,h4,h5,h6){line-height:1.1}
 .keyword-strategy #keyword-strategy{font-size:clamp(2.55rem,8vw,6.4rem);max-width:15ch;margin:.55rem 0 1.5rem}
-.keyword-strategy > [data-view-heading="4"],.keyword-strategy > h4:not(#keyword-strategy){font-size:clamp(1.7rem,4vw,2.6rem);margin:2.65rem 0 .9rem}
+.keyword-strategy > [data-view-heading="4"],.keyword-strategy > h4:not([id]){font-size:clamp(1.7rem,4vw,2.6rem);margin:2.65rem 0 .9rem}
 .kw-kicker,.kw-note,.kw-controls,.kw-value,.kw-status,.kw-metrics dt{font:400 .83rem/1.55 var(--m);color:var(--soft)}
 .kw-kicker{margin:0;text-transform:uppercase;letter-spacing:.08em}
 .kw-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,11rem),1fr));gap:1rem 2rem;border-block:1px solid var(--line);padding:1.2rem 0;margin:1.75rem 0 .7rem}
@@ -182,7 +182,7 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .content-strategy{margin-top:3.5rem;padding-top:2.25rem;border-top:1px solid var(--wine);overflow-wrap:anywhere}
 .content-strategy :is(h3,h4,h5,h6){line-height:1.1}
 .content-strategy #content-strategy{font-size:clamp(2.55rem,8vw,6.4rem);max-width:15ch;margin:.55rem 0 1.5rem}
-.content-strategy > h5,.content-strategy > h4:not(#content-strategy){font-size:clamp(1.7rem,4vw,2.6rem);margin:2.65rem 0 .9rem}
+.content-strategy > h5,.content-strategy > h4:not([id]){font-size:clamp(1.7rem,4vw,2.6rem);margin:2.65rem 0 .9rem}
 .content-strategy :is(summary,select):focus-visible{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px var(--lime)}
 .cs-disclosures details{border-top:1px solid var(--line);min-width:0}
 .cs-disclosures summary{cursor:pointer;min-height:2.75rem;padding:.6rem .3rem;color:var(--wine)}
@@ -248,7 +248,7 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .case-evidence{border-block:1px solid var(--line);padding:.5rem 0;margin:.75rem 0}
 .case-evidence[open]>summary{margin-bottom:1rem}
 .case-evidence summary{color:var(--wine);cursor:pointer;padding:.35rem .25rem}
-.keyword-strategy > h4:not(#keyword-strategy),.keyword-strategy > h5{margin:1.9rem 0 .55rem}
+.keyword-strategy > h4:not([id]),.keyword-strategy > h5{margin:1.9rem 0 .55rem}
 .keyword-strategy #keyword-strategy{margin-bottom:.7rem}
 .kw-deck{font-size:clamp(1.15rem,2.3vw,1.6rem);font-style:italic;color:var(--wine)}
 .kw-scatter{width:min(100%,42rem);margin:0 0 1.1rem}
@@ -291,12 +291,51 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 }
 
 /* Editorial chapters and compact supporting research */
-.case-chapter{padding:3.6rem 0 1rem;border-bottom:1px solid var(--line)}
-.chapter-heading{margin:0 0 1.6rem}
-.chapter-heading .case-section-title{font-size:clamp(2.7rem,7.5vw,6rem);max-width:18ch;margin:.25rem 0 0}
+.cfe{
+  --chapter-space:clamp(3.75rem,8vw,7rem);
+  --subsection-space:clamp(2.75rem,5.5vw,4.5rem);
+  --heading-space:clamp(2.15rem,4.5vw,3rem);
+  --content-space:clamp(1.2rem,2.25vw,1.75rem);
+  --paragraph-space:clamp(1rem,1.7vw,1.35rem);
+  --note-space:clamp(.8rem,1.4vw,1.1rem);
+  --chapter-type:clamp(2.35rem,4.35vw,3.5rem);
+  --section-type:clamp(1.55rem,2.65vw,2rem);
+  --minor-type:clamp(1.13rem,1.65vw,1.38rem);
+  --annotation-type:clamp(1.75rem,2.4vw,2.125rem);
+}
+.case-chapter{padding:var(--chapter-space) 0 var(--content-space);border-bottom:1px solid var(--line);min-width:0}
+.chapter-heading{width:100%;margin:0 0 var(--heading-space);min-width:0}
+.chapter-heading .kw-kicker{max-width:none;margin:0;font-size:.8rem;letter-spacing:.125em}
+.chapter-heading .case-section-title{font-size:var(--chapter-type);line-height:1.12;max-width:none;margin:var(--note-space) 0 0;text-wrap:balance}
+.case-chapter p{max-width:62ch}
+.case-chapter .lede{font-size:clamp(1.2rem,1.6vw,1.38rem);line-height:1.55}
+.case-chapter .bd > p,.case-chapter .chapter-intro > p{margin-block:0 var(--paragraph-space)}
+.case-chapter figcaption{font-size:clamp(.79rem,1.1vw,.875rem);line-height:1.55}
+.case-chapter :is(.g,.bd,.two2,.pa,.gal,.chips,.kw-scatter,.kw-pathways,.cs-weeks,.cs-journey,.cs-campaign,.cs-matrix){min-width:0}
+.case-chapter :is(.g,.two2,.pa,.gal,.chips,.kw-pathways,.cs-weeks,.cs-journey,.cs-campaign,.cs-matrix) > *{min-width:0}
+.case-chapter :is(img,svg){max-inline-size:100%}
+.case-chapter .g{grid-template-columns:minmax(0,1fr);gap:var(--content-space)}
+.case-chapter .g > div:first-child:has(> .an){padding:.17em .18em .28em}
+.case-chapter .g .an{max-width:37ch;font-size:var(--annotation-type);line-height:1.35;transform:rotate(-1deg);text-wrap:balance}
+.case-chapter .case-subtitle{font-size:var(--minor-type);line-height:1.26}
+.case-chapter .bd > .case-subtitle{margin:var(--subsection-space) 0 var(--content-space)}
+.case-chapter .bd > .case-subtitle + *{margin-top:0}
+.case-chapter .case-evidence{margin-block:var(--content-space)}
+.case-chapter .bd > .full{margin:var(--content-space) 0 0}
+.case-chapter > .full{margin:var(--subsection-space) 0 0}
+.case-chapter > .full figcaption,.case-chapter .bd > .full figcaption{padding-inline:0}
+.case-chapter .chip{padding:1.9rem .75rem .75rem}
+.case-chapter .tn{min-width:0}
+.case-chapter .tn > *{min-width:0}
+
 .chapter-intro{max-width:48rem}
-.chapter-part{margin:1.8rem 0 0}
-.chapter-subtitle{margin:0 0 .9rem}
+.chapter-part{margin:var(--subsection-space) 0 0;min-width:0}
+.chapter-heading + .chapter-part{margin-top:0}
+.chapter-part ~ .chapter-part{border-top:1px solid var(--line);padding-top:var(--content-space)}
+.case-chapter .chapter-subtitle{font-size:var(--section-type);line-height:1.18;margin:0 0 var(--note-space);text-wrap:balance}
+.chapter-subtitle + :not(.g){margin-top:var(--content-space)}
+.case-chapter .chapter-subtitle + .g > .bd:first-child{margin-top:var(--note-space)}
+.case-chapter .chapter-journal .case-subtitle{margin-bottom:var(--note-space)}
 .chapter-journal{display:grid;gap:1rem}
 .chapter-journal>div{border-top:1px solid var(--line);padding-top:.65rem}
 .chapter-journal p{margin:.35rem 0}
@@ -304,20 +343,32 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .case-skills li{border-bottom:1px solid var(--line)}
 .case-overview #project-overview{font-size:clamp(2.3rem,5vw,4.75rem)}
 .chapter-bar{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:.55rem 1rem;background:var(--sheet);border-block:1px solid var(--line);padding:.3rem .75rem}
+.chapter-bar nav{min-width:0}
 .chapter-bar nav ol{display:flex;flex-wrap:wrap;gap:.25rem .9rem;list-style:none;padding:0;margin:0}
 .chapter-bar :is(a,summary){display:inline-flex;align-items:center;min-height:2.4rem;gap:.25rem;padding:.1rem .2rem;color:var(--wine);font:400 .82rem/1.35 var(--m)}
 .chapter-bar a[aria-current="location"]{background:var(--wine);color:var(--paper);text-decoration-color:currentColor}
-.chapter-bar .chapter-top{margin-left:auto;text-align:right}
+.chapter-bar .chapter-top{margin-left:auto;text-align:right;flex-shrink:0}
 .chapter-index{font-size:.68rem}
 .chapter-mobile{display:none}
 .chapter-bar summary:focus-visible,.cs-date-grid button:focus-visible,.cs-mix button:focus-visible,.cs-journey summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px var(--lime)}
-.cfe [id][tabindex="-1"]{scroll-margin-top:4.7rem}
+.cfe [id][tabindex="-1"]{scroll-margin-top:5rem}
+.cfe .chapter-heading .case-section-title{scroll-margin-top:7.15rem}
 .cfe #project-overview{scroll-margin-top:1rem}
-#chapter-audience .keyword-strategy,#s08 .content-strategy{margin-top:1.45rem;padding-top:1.2rem}
-.content-strategy,.measurement-strategy{margin-top:1.8rem}
-.content-strategy > h5,.content-strategy > h4:not(#content-strategy){margin:1.8rem 0 .55rem}
-.content-strategy #content-strategy{margin-bottom:.6rem}
-.audience-strategy{padding-top:1.1rem}
+.case-chapter :is(.keyword-strategy,.content-strategy,.measurement-strategy){margin-top:var(--subsection-space);padding-top:var(--content-space);min-width:0}
+.case-chapter :is(#keyword-strategy,#content-strategy,#audience-strategy,#measurement-strategy){
+  font-size:var(--section-type);line-height:1.18;max-width:none;margin:var(--note-space) 0 var(--content-space);text-wrap:balance;
+}
+.case-chapter :is(.keyword-strategy,.content-strategy) > :is(h4,h5):not([id]){
+  font-size:var(--minor-type);line-height:1.26;margin:var(--heading-space) 0 var(--note-space);
+}
+.case-chapter :is(.keyword-strategy,.content-strategy,.measurement-strategy) > p{margin-block:0 var(--paragraph-space)}
+.case-chapter :is(.kw-lane,.cs-week,.cs-matrix section) > :is(h5,h6){font-size:var(--minor-type);line-height:1.25}
+.case-chapter .kw-deck{font-size:clamp(1.1rem,2vw,1.43rem);line-height:1.5}
+.case-chapter .kw-scatter{width:min(100%,43rem);max-width:100%}
+.case-chapter .kw-scatter .kw-controls{grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr))}
+.case-chapter .kw-scatter .kw-controls select{font-size:.9rem}
+.case-chapter .kw-scatter :is(svg,.kw-axis-caption){max-width:38rem}
+.case-chapter :is(.kw-value,.cs-relevance){overflow-wrap:anywhere}
 .cs-pillars .cs-mix{height:.8rem}
 .cs-mix button{flex:0 1 var(--share);border:0;border-radius:0;padding:0;background:var(--wine);cursor:pointer;position:relative;min-width:0}
 .cs-mix button:nth-child(2){background:#714350}.cs-mix button:nth-child(3){background:#8b5965}
