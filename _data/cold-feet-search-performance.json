@@ -308,7 +308,44 @@
         "Confirm the redirected URL leads to its intended destination.",
         "Monitor canonical selection, indexation and visibility across comparable periods."
       ],
-      "evidence": []
+      "evidence": [
+        {
+          "path": "assets/images/evidence/search-console/2026-11-26/performance-overview.png",
+          "width": 1907,
+          "height": 832,
+          "caption": "Performance overview and daily Web search graph. Account toolbar cropped."
+        },
+        {
+          "path": "assets/images/evidence/search-console/2026-11-26/top-pages.png",
+          "width": 1427,
+          "height": 667,
+          "caption": "Top pages: ten visible URL rows with clicks and impressions."
+        },
+        {
+          "path": "assets/images/evidence/search-console/2026-11-26/search-queries.png",
+          "width": 1458,
+          "height": 368,
+          "caption": "Search queries: one visible result for journaling poetry."
+        },
+        {
+          "path": "assets/images/evidence/search-console/2026-11-26/countries.png",
+          "width": 1408,
+          "height": 672,
+          "caption": "Country breakdown: the ten visible rows."
+        },
+        {
+          "path": "assets/images/evidence/search-console/2026-11-26/page-indexing.png",
+          "width": 1438,
+          "height": 810,
+          "caption": "Page indexing overview: 108 indexed and 64 not indexed."
+        },
+        {
+          "path": "assets/images/evidence/search-console/2026-11-26/indexing-exclusions.png",
+          "width": 1213,
+          "height": 653,
+          "caption": "Indexing exclusion reasons, including 44 canonical discrepancies."
+        }
+      ]
     }
   ]
 }
