@@ -1,0 +1,100 @@
+<section class="search-performance" aria-labelledby="organic-search-performance">
+<p class="kw-kicker">Organic search / Launch-stage baseline</p>
+<h4 id="organic-search-performance" data-view-heading="3" tabindex="-1">The first signs of visibility.</h4>
+<p class="kw-deck">From estimated search demand to observed audience behaviour.</p>
+<p>Following the launch of Cold Feet Editions, I established an initial organic search performance baseline to understand how audiences were discovering the studio. Using Google Search Console, I evaluated search visibility, geographic reach, keyword relevance and technical indexation to identify opportunities for future optimisation.</p>
+{{METRICS}}
+<p class="kw-note">{{SOURCE}} · {{PROPERTY}} · {{SEARCH_TYPE}} search · {{FILTER}} selected · {{PERIOD}} visible · Captured {{CAPTURED}}</p>
+<p>The UK accounted for {{UK_SHARE}} of recorded impressions and the only click. The clearest technical follow-up is to inspect the {{CANONICAL_COUNT}} URLs where Google chose a different canonical.</p>
+
+<details class="case-evidence">
+<summary id="search-visibility" data-open-disclosure>Search visibility over time</summary>
+{{LINE_CHART}}
+<p>Daily figures were reconstructed from a screenshot. The lines connect observed counts without smoothing. The pattern is too sparse to establish a trend.</p>
+<details class="case-evidence"><summary id="search-daily-counts" data-open-disclosure>View the daily counts</summary>{{DAILY_TABLE}}</details>
+</details>
+
+<details class="case-evidence">
+<summary id="geographic-discovery" data-open-disclosure>Geographic discovery</summary>
+{{UK_DONUT}}
+<p>The UK produced the only recorded click, giving a {{UK_CTR}} CTR from just {{UK_IMPRESSIONS}} impressions. That is too little data for a dependable rate or market-demand conclusion.</p>
+<details class="case-evidence"><summary id="search-country-counts" data-open-disclosure>View the country breakdown</summary>{{COUNTRIES}}</details>
+</details>
+
+<details class="case-evidence">
+<summary id="page-discovery" data-open-disclosure>Page discovery</summary>
+<p>Homepage and About Us led the visible rows with seven impressions each. All Products (GBP) and Collections had five each. The sample includes both editorial and commercial pages.</p>
+{{PAGE_BARS}}
+<p>Several URLs can appear in a single result. Page-level counts cannot be summed to obtain the property total.</p>
+<details class="case-evidence"><summary id="search-page-counts" data-open-disclosure>View URL paths and clicks</summary>{{PAGES}}</details>
+</details>
+
+<details class="case-evidence">
+<summary id="keyword-discovery" data-open-disclosure>Keyword discovery</summary>
+<p class="search-query">“{{QUERY}}”</p>
+<p class="kw-note">Only visible reported query · {{QUERY_IMPRESSIONS}} impression · {{QUERY_CLICKS}} clicks</p>
+<p>The query fits the <a href="#article-almost-always">Almost, Always poetry journal</a>, the <a href="#audience-strategy">Aspiring Writer audience hypothesis</a> and the existing <a href="https://coldfeeteditions.store/pages/article-how-to-start-a-poetry-journal">How to Start a Poetry Journal</a> article. Review that article, add useful internal links and monitor related queries before extending it into prompts, creative writing exercises or journaling rituals.</p>
+<p>Search Console can withhold low-volume queries. This example accounts for neither all impressions nor the recorded click. Average position is reported for the property snapshot.</p>
+</details>
+
+<details class="case-evidence">
+<summary id="technical-search-audit" data-open-disclosure>Technical SEO and indexing</summary>
+{{INDEX_DONUT}}
+<p>{{KNOWN}} known URLs · Indexing report last updated {{INDEX_UPDATED}}. Indexed URLs can include multiple versions of the same content. Some exclusions are expected.</p>
+{{INDEX_BARS}}
+<p>Canonical differences account for {{CANONICAL_EXCLUDED}} of excluded URLs and approximately {{CANONICAL_KNOWN}} of known URLs. Discovered but not indexed accounts for about {{DISCOVERED_SHARE}} of exclusions.</p>
+<details class="case-evidence">
+<summary id="canonical-investigation" data-open-disclosure>One website, multiple versions.</summary>
+<p>Google reported selecting a different canonical from the declared preference for {{CANONICAL_COUNT}} URLs. All ten visible examples have currency-specific paths, suggesting Fourthwall’s international URL structure may contribute to consolidation. Only the ten visible rows were reviewed. The selected destinations and any adverse impact are unverified, and no changes have been made. Some duplicate exclusions may be appropriate.</p>
+<figure class="search-canonical">
+<figcaption>Illustrative consolidation · Google’s selected destination is unverified</figcaption>
+<ul><li><code>/en-nzd/pages/article-how-to-start-a-poetry-journal</code></li><li><code>/en-usd/pages/article-how-to-start-a-poetry-journal</code></li></ul>
+<p><span aria-hidden="true">↓</span> Could consolidate to <code>/pages/article-how-to-start-a-poetry-journal</code></p>
+</figure>
+{{CANONICAL_EXAMPLES}}
+</details>
+<details class="case-evidence"><summary id="technical-search-actions" data-open-disclosure>Technical audit action plan</summary>{{ACTIONS}}</details>
+</details>
+
+<details class="case-evidence">
+<summary id="research-to-discovery" data-open-disclosure>From research to real-world discovery.</summary>
+<p>The <a href="#keyword-strategy">keyword map</a> estimates monthly demand across related searches. Its combined 17,330 is a planning input, and keyword difficulty is a competition estimate. Neither indicates how often this site appeared.</p>
+<p>Search Console impressions count observed appearances in results. Clicks count visits initiated from those results. Sign-ups and orders are separate website outcomes and are outside this snapshot. Use observed queries to test the <a href="#audience-strategy">audience hypotheses</a> and inform future content decisions.</p>
+</details>
+
+<details class="case-evidence">
+<summary id="search-decision-log" data-open-disclosure>Marketing decision log</summary>
+<div class="search-decisions">
+<article><h5 data-view-heading="4">Geographic targeting</h5><dl>
+<div><dt>Observation</dt><dd>{{UK_SHARE}} of impressions and the only click came from the UK.</dd></div>
+<div><dt>Interpretation</dt><dd>Consistent with a UK-first strategy, with too little evidence to establish demand.</dd></div>
+<div><dt>Recommended action</dt><dd>Maintain UK-first targeting and monitor geography.</dd></div>
+<div><dt>Status</dt><dd>Existing strategy, ongoing evaluation.</dd></div>
+<div><dt>Measurement</dt><dd>UK impressions, clicks and relevant website conversions.</dd></div>
+</dl></article>
+<article><h5 data-view-heading="4">Editorial discoverability</h5><dl>
+<div><dt>Observation</dt><dd>“{{QUERY}}” generated {{QUERY_IMPRESSIONS}} impression.</dd></div>
+<div><dt>Interpretation</dt><dd>The site appeared for a subject relevant to its journal and editorial content.</dd></div>
+<div><dt>Recommended action</dt><dd>Review the existing poetry journaling article, strengthen internal links and monitor related queries.</dd></div>
+<div><dt>Status</dt><dd>Article published, optimisation recommended.</dd></div>
+<div><dt>Measurement</dt><dd>Article-level impressions, relevant queries and organic clicks.</dd></div>
+</dl></article>
+<article><h5 data-view-heading="4">Commercial visibility</h5><dl>
+<div><dt>Observation</dt><dd>Product-listing and collection pages appeared in organic results.</dd></div>
+<div><dt>Interpretation</dt><dd>Commercial content has begun to appear in search.</dd></div>
+<div><dt>Recommended action</dt><dd>Review collection copy, product metadata and internal links.</dd></div>
+<div><dt>Status</dt><dd>Ongoing optimisation recommended.</dd></div>
+<div><dt>Measurement</dt><dd>Commercial-page impressions, clicks and product engagement.</dd></div>
+</dl></article>
+<article><h5 data-view-heading="4">Technical SEO</h5><dl>
+<div><dt>Observation</dt><dd>{{CANONICAL_COUNT}} canonical differences; currency paths appear in all ten visible examples.</dd></div>
+<div><dt>Interpretation</dt><dd>Fourthwall’s international URL structure may contribute to duplicate consolidation.</dd></div>
+<div><dt>Recommended action</dt><dd>Compare declared and selected canonicals in URL Inspection and verify priority UK pages.</dd></div>
+<div><dt>Status</dt><dd>Verification pending.</dd></div>
+<div><dt>Measurement</dt><dd>Canonical selection, priority page indexing and search visibility.</dd></div>
+</dl></article>
+</div>
+</details>
+<details class="case-evidence"><summary id="search-methodology" data-open-disclosure>Methodology and limitations</summary>{{METHODOLOGY}}</details>
+{{EVIDENCE}}
+</section>

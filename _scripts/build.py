@@ -12,6 +12,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 from anatomy_feature import render_anatomy_feature
 from content_strategy import render_content_strategy
 from keyword_strategy import definition, render_keyword_strategy
+from search_performance import render_search_performance
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://mosambrook-ai.github.io/Portfolio-Content-Marketing/"
@@ -287,6 +288,8 @@ def project_case(entry):
             overview = (ROOT / "_content/cases/project-overview.html").read_text(encoding="utf-8")
             overview = overview.replace("{{TIMEFRAME}}", escape(entry["timeframe"])).replace("{{DELIVERABLES}}", deliverables)
             content = content.replace("{{PROJECT_OVERVIEW}}", overview)
+        if "{{SEARCH_PERFORMANCE}}" in content:
+            content = content.replace("{{SEARCH_PERFORMANCE}}", render_search_performance(ROOT))
         if "{{KEYWORD_STRATEGY}}" in content:
             content = content.replace("{{KEYWORD_STRATEGY}}", render_keyword_strategy(ROOT))
         if "{{CONTENT_STRATEGY}}" in content:

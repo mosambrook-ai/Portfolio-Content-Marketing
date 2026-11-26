@@ -1,0 +1,314 @@
+{
+  "source": "Google Search Console",
+  "property": "https://coldfeeteditions.store/",
+  "snapshots": [
+    {
+      "captured": "2026-11-26",
+      "search_type": "Web",
+      "reporting_filter": "Last three months",
+      "visible_dates": [
+        "2026-11-10",
+        "2026-11-24"
+      ],
+      "indexing_updated": "2026-11-23",
+      "overview": {
+        "clicks": 1,
+        "impressions": 20,
+        "average_ctr": 5,
+        "average_position": 6.4
+      },
+      "daily": [
+        {
+          "date": "2026-11-10",
+          "impressions": 6,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-11",
+          "impressions": 2,
+          "clicks": 1
+        },
+        {
+          "date": "2026-11-12",
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-13",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-14",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-15",
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-16",
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-17",
+          "impressions": 2,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-18",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-19",
+          "impressions": 3,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-20",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-21",
+          "impressions": 0,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-22",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-23",
+          "impressions": 2,
+          "clicks": 0
+        },
+        {
+          "date": "2026-11-24",
+          "impressions": 0,
+          "clicks": 0
+        }
+      ],
+      "queries": [
+        {
+          "query": "journaling poetry",
+          "impressions": 1,
+          "clicks": 0
+        }
+      ],
+      "pages": [
+        {
+          "label": "Homepage",
+          "path": "/",
+          "impressions": 7,
+          "clicks": 1
+        },
+        {
+          "label": "About Us",
+          "path": "/pages/about-us",
+          "impressions": 7,
+          "clicks": 0
+        },
+        {
+          "label": "All Products (GBP)",
+          "path": "/en-gbp/collections/all",
+          "impressions": 5,
+          "clicks": 0
+        },
+        {
+          "label": "Collections",
+          "path": "/pages/collections",
+          "impressions": 5,
+          "clicks": 0
+        },
+        {
+          "label": "Journal (BRL)",
+          "path": "/en-brl/pages/journal",
+          "impressions": 2,
+          "clicks": 0
+        },
+        {
+          "label": "Journal",
+          "path": "/pages/journal",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "label": "Returns FAQ (MXN)",
+          "path": "/en-mxn/pages/returns-faq",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "label": "Stationery & Objects (INR)",
+          "path": "/en-inr/pages/stationery-objects",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "label": "All Products (MXN)",
+          "path": "/en-mxn/pages/all-products",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "label": "Poetry Wall Prints (GBP)",
+          "path": "/en-gbp/pages/poetry-wall-prints",
+          "impressions": 1,
+          "clicks": 0
+        }
+      ],
+      "countries": [
+        {
+          "country": "United Kingdom",
+          "impressions": 8,
+          "clicks": 1
+        },
+        {
+          "country": "United States",
+          "impressions": 2,
+          "clicks": 0
+        },
+        {
+          "country": "Bulgaria",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "country": "Switzerland",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "country": "India",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "country": "Brazil",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "country": "Sweden",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "country": "Bahrain",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "country": "Australia",
+          "impressions": 1,
+          "clicks": 0
+        },
+        {
+          "country": "Spain",
+          "impressions": 1,
+          "clicks": 0
+        }
+      ],
+      "indexing": {
+        "known": 172,
+        "indexed": 108,
+        "excluded": 64,
+        "reasons": [
+          {
+            "reason": "Duplicate, Google chose different canonical than user",
+            "urls": 44
+          },
+          {
+            "reason": "Discovered – currently not indexed",
+            "urls": 15
+          },
+          {
+            "reason": "Alternate page with proper canonical tag",
+            "urls": 3
+          },
+          {
+            "reason": "Excluded by noindex tag",
+            "urls": 1
+          },
+          {
+            "reason": "Page with redirect",
+            "urls": 1
+          },
+          {
+            "reason": "Crawled – currently not indexed",
+            "urls": 0
+          }
+        ]
+      },
+      "canonicals": [
+        {
+          "path": "/en-nzd/pages/article-how-to-start-a-poetry-journal",
+          "last_crawled": "2026-11-20"
+        },
+        {
+          "path": "/en-usd/pages/article-how-to-start-a-poetry-journal",
+          "last_crawled": "2026-11-20"
+        },
+        {
+          "path": "/en-gbp/pages/journal",
+          "last_crawled": "2026-11-19"
+        },
+        {
+          "path": "/en-aud/pages/terms-of-service",
+          "last_crawled": "2026-11-17"
+        },
+        {
+          "path": "/en-aud/pages/privacy-policy",
+          "last_crawled": "2026-11-17"
+        },
+        {
+          "path": "/en-aud/pages/about-us",
+          "last_crawled": "2026-11-17"
+        },
+        {
+          "path": "/en-aud/pages/journal",
+          "last_crawled": "2026-11-17"
+        },
+        {
+          "path": "/en-cad/pages/returns-faq",
+          "last_crawled": "2026-11-16"
+        },
+        {
+          "path": "/en-brl/pages/privacy-policy",
+          "last_crawled": "2026-11-16"
+        },
+        {
+          "path": "/en-pln/pages/we-were-never-asking-for-a-revolution",
+          "last_crawled": "2026-11-15"
+        }
+      ],
+      "methodology": [
+        "Daily figures were reconstructed from the visible Search Console graph, which uses separate scales for impressions and clicks. The chart here uses a single count axis.",
+        "Page-level impressions can count multiple URLs in the same result. They cannot be added to obtain the property total. Country rows report only what was visible, with the remainder calculated from the property total."
+      ],
+      "limitations": [
+        "At launch, the sample is too small to treat CTR or average position as stable indicators.",
+        "Search Console can withhold low-volume queries to protect privacy. The only reported query cannot explain the property totals or the recorded click.",
+        "Indexing does not guarantee rankings or traffic. Canonical differences can be appropriate consolidation.",
+        "This snapshot does not establish causation or conversions."
+      ],
+      "actions": [
+        "Inspect representative currency-specific URLs in Search Console.",
+        "Compare declared and Google-selected canonical destinations.",
+        "Verify indexation of priority UK product pages.",
+        "Verify indexation of key Journal articles.",
+        "Review the 15 discovered but not indexed URLs.",
+        "Confirm the noindex exclusion is intentional.",
+        "Confirm the redirected URL leads to its intended destination.",
+        "Monitor canonical selection, indexation and visibility across comparable periods."
+      ],
+      "evidence": []
+    }
+  ]
+}

@@ -725,3 +725,56 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .writing-return{margin-top:1rem}
 #about .professional-section{padding-block:clamp(1.65rem,4vw,3.5rem)}
 #about .about-biography{padding-block:clamp(1.5rem,3vw,2.75rem)}
+
+/* Chapter 06 · Organic search performance */
+.search-performance{--search-click:#315b60;padding:0 0 clamp(1.25rem,3vw,2.25rem)}
+.search-performance>.case-evidence{margin:.65rem 0}
+.search-performance .kw-deck{margin:.4rem 0 1rem}
+.search-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1rem;margin:1rem 0 .65rem}
+.search-metrics>div{display:flex;flex-direction:column;padding:.5rem 0;border-top:1px solid var(--line)}
+.search-metrics dt{font:400 .8rem/1.4 var(--m);color:var(--soft)}
+.search-metrics dd{order:-1;margin:0;color:var(--wine);font:500 clamp(1.65rem,4vw,2.6rem)/1.14 "Playfair Display",Georgia,serif}
+.search-chart{max-width:44rem}
+.search-chart svg{display:block;width:100%;height:auto}
+.search-chart text{font:13px var(--m);fill:var(--ink)}
+.search-gridline{fill:none;stroke:var(--line)}
+.search-series{fill:none;stroke-width:2.5;stroke-linejoin:round}
+.search-series-impressions{stroke:var(--wine)}
+.search-series-clicks{stroke:var(--search-click);stroke-dasharray:5 4}
+.search-impressions-key{color:var(--wine)}
+.search-clicks-key{color:var(--search-click)}
+.search-hit{fill:transparent}
+.search-dot{fill:var(--wine)}
+.search-point:focus-visible .search-hit{stroke:var(--wine);stroke-dasharray:2}
+.search-tip{visibility:hidden;pointer-events:none}
+.search-tip rect{fill:var(--wine)}
+.search-tip text{fill:var(--sheet);font-size:11px}
+.search-point:is(:hover,:focus) .search-tip{visibility:visible}
+.search-donut{display:flex;align-items:center;gap:.8rem 1rem;margin:.85rem 0!important}
+.search-ring{display:grid;place-items:center;flex:none;inline-size:5.5rem;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--wine) var(--share),var(--line) 0);color:var(--wine)}
+.search-ring strong{display:grid;place-items:center;inline-size:76%;aspect-ratio:1;border-radius:50%;background:var(--sheet);font:600 1rem var(--m)}
+.search-bars ul{list-style:none;padding:0;margin:.6rem 0 1rem;max-width:39rem}
+.search-bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.2rem .6rem;margin:.4rem 0;line-height:1.35}
+.search-bar{grid-column:1/-1;min-width:0;height:.35rem;background:var(--line)}
+.search-bar::after{display:block;content:"";width:var(--fill);height:100%;background:var(--wine)}
+.search-table{width:100%;border-collapse:collapse;table-layout:fixed;margin:.75rem 0;font-size:clamp(.7rem,1.3vw,.9rem);line-height:1.45}
+.search-table caption{text-align:left;padding-bottom:.55rem;color:var(--soft)}
+.search-table th,.search-table td{padding:.35rem .25rem;border-bottom:1px solid var(--line);text-align:left;overflow-wrap:anywhere}
+.search-table th:first-child{width:54%}
+.search-table th[scope=row]{font-weight:400}
+.search-query{font:500 clamp(1.45rem,4vw,2.4rem)/1.15 "Playfair Display",Georgia,serif;color:var(--wine);margin:.3rem 0}
+.search-canonical{padding:.8rem;background:var(--sheet);overflow-wrap:anywhere}
+.search-canonical code{font:400 .78rem/1.5 var(--m)}
+.search-decisions,.search-evidence-grid{display:grid;gap:1rem 2rem}
+.search-decisions article{border-top:1px solid var(--line);padding-top:.75rem}
+.search-decisions dl{margin:.6rem 0}
+.search-decisions dt{color:var(--wine);font-weight:600}
+.search-decisions dd{margin:0 0 .45rem}
+@media(min-width:45rem){
+  .search-metrics{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .search-decisions,.search-evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:32rem){
+  .search-chart text{font-size:19px}
+  .search-tip text{font-size:13px}
+}
