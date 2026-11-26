@@ -176,7 +176,13 @@ def writing_sample_detail(entry, related_prefix="#"):
         f'<a href="{related_prefix}{escape(link["anchor"])}">{escape(link["label"])}</a>'
         for link in sample["related"]
     )
-    image = f'<figure class="writing-detail-image">{image_html(sample["image"])}</figure>' if sample.get("image") else ""
+    artwork = sample.get("image") or entry.get("image")
+    image = ""
+    if artwork:
+        image = (f'<figure class="writing-detail-image"><a href="{escape(artwork["src"])}">'
+                 f'{image_html(artwork)}<span class="m">View larger artwork</span></a></figure>')
+    skills = ", ".join(sample["skills"])
+    credits += f"<div><dt>Skills</dt><dd>{escape(skills)}</dd></div>"
     return (
         '<div class="writing-detail"><div class="writing-extracts">' + "".join(extracts) + '</div>'
         f'{image}<dl class="writing-credits">{credits}</dl>'
@@ -184,34 +190,37 @@ def writing_sample_detail(entry, related_prefix="#"):
     )
 
 
-def writing_sample(entry):
+def writing_sample(entry, number):
     sample = entry["sample"]
     title = escape(entry["title"])
-    skills = "".join(f'<li>{escape(skill)}</li>' for skill in sample["skills"])
+    skills = "".join(f'<li>{escape(skill)}</li>' for skill in sample["skills"][:3])
     tags = f'<ul class="skills-list writing-skills" role="list">{skills}</ul>'
     art = f'<figure class="writing-art">{image_html(entry["image"])}</figure>' if entry.get("image") else ""
+    aliases = "".join(
+        f'<span id="{escape(alias)}" tabindex="-1"></span>' for alias in entry.get("legacy_hashes", [])
+    )
     if entry.get("dedicated"):
         identifier = ""
         action = f'<p><a href="{route(entry, "writing")}">Explore the sample</a></p>'
     else:
         identifier = f' id="{anchor(entry, "writing")}" tabindex="-1"'
         action = (
-            f'<details class="writing-preview"><summary aria-label="Explore the sample: {title}">Explore the sample</summary>'
+            f'<details class="writing-preview" name="writing-preview">'
+            f'<summary class="writing-control" aria-label="Explore the sample: {title}">Explore the sample</summary>'
             + writing_sample_detail(entry) + '</details>'
         )
     return (
         f'<article class="writing-entry" data-writing-group="{escape(sample["group"])}"{identifier}>'
-        f'<div class="writing-card"><div class="writing-copy">'
-        f'<p class="m positioning">{escape(entry["category"])} · {escape(sample["format"])}</p>'
+        f'{aliases}{art}<div class="writing-copy">'
+        f'<p class="m positioning">{number:02d} / {escape(entry["category"])}</p>'
         f'<h3 class="writing-title" data-view-heading="2">{title}</h3>'
-        f'<p>{escape(entry["description"])}</p>{tags}</div>'
-        f'{art}</div>{action}</article>'
+        f'<p>{escape(entry["description"])}</p>{tags}</div>{action}</article>'
     )
 
 
-def writing_feature(entry):
+def writing_feature(entry, number):
     if entry.get("sample"):
-        return writing_sample(entry)
+        return writing_sample(entry, number)
     meta = escape(entry["category"])
     if entry.get("publisher"):
         meta += " · Published by " + escape(entry["publisher"])
@@ -378,7 +387,7 @@ def render():
         "HOME_PROJECTS": home_projects(projects),
         "WORK_PROJECTS": "\n".join(project_row(entry, i, False) for i, entry in enumerate(projects, 1)),
         "CASE_VIEWS": "\n".join(cases),
-        "WRITING": "\n".join(writing_feature(entry) for entry in writing),
+        "WRITING": "\n".join(writing_feature(entry, number) for number, entry in enumerate(writing, 1)),
         "WRITING_REDIRECTS": "\n".join(writing_redirects),
     }
     for key, value in replacements.items():

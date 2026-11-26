@@ -143,29 +143,124 @@ function openDisclosures(anchor) {
 }
 
 const writing = document.getElementById("writing");
-const writingFilters = writing?.querySelector(".writing-filters");
-const writingEntries = [...(writing?.querySelectorAll("article[data-writing-group]") || [])];
-const writingStatus = writing?.querySelector(".writing-results");
-const filterButtons = [...(writingFilters?.querySelectorAll("button") || [])];
+const writingReader = writing ? createWritingReader(writing) : null;
 
-function filterWriting(group) {
-  let visible = 0;
-  for (const entry of writingEntries) {
-    entry.hidden = group !== "all" && entry.dataset.writingGroup !== group;
-    if (!entry.hidden) visible++;
-  }
-  for (const button of filterButtons) {
-    button.setAttribute("aria-pressed", String(button.dataset.writingFilter === group));
-  }
-  writingStatus.textContent = visible === 1 ? "1 writing sample" : visible + " writing samples";
-}
+function createWritingReader(view) {
+  const gallery = view.querySelector(".writing-gallery");
+  const filters = view.querySelector(".writing-filters");
+  const status = view.querySelector(".writing-results");
+  const entries = [...gallery.querySelectorAll("article[data-writing-group]")];
+  const filterButtons = [...filters.querySelectorAll("button")];
+  const samples = new Map();
+  let current;
 
-if (writingFilters) {
-  for (const button of filterButtons) {
-    button.addEventListener("click", () => filterWriting(button.dataset.writingFilter));
+  function placePanel() {
+    if (!current || view.hidden) return;
+    const visible = entries.filter(entry => !entry.hidden);
+    const index = visible.indexOf(current.entry);
+    const columns = Number(getComputedStyle(gallery).getPropertyValue("--writing-columns"));
+    const rowEnd = Math.min(index - index % columns + columns - 1, visible.length - 1);
+    const lastEntry = visible[rowEnd];
+    if (lastEntry.nextElementSibling !== current.panel) lastEntry.after(current.panel);
   }
-  writingFilters.hidden = false;
-  filterWriting("all");
+
+  function close({restoreFocus = false, clearHash = false} = {}) {
+    if (!current) return;
+    const {entry, button, panel} = current;
+    current = undefined;
+    button.setAttribute("aria-expanded", "false");
+    panel.hidden = true;
+    if (clearHash && entry.contains(document.getElementById(location.hash.slice(1)))) {
+      history.replaceState(null, "", "#writing");
+    }
+    if (restoreFocus) {
+      button.focus({preventScroll: true});
+      button.scrollIntoView({block: "nearest", behavior: "instant"});
+    }
+  }
+
+  function open(sample) {
+    if (!sample) return null;
+    if (current !== sample) {
+      close();
+      current = sample;
+      sample.button.setAttribute("aria-expanded", "true");
+      sample.panel.hidden = false;
+    }
+    placePanel();
+    return sample.heading;
+  }
+
+  function filter(group) {
+    const accepts = entry => group === "all" || entry.dataset.writingGroup === group;
+    if (current && !accepts(current.entry)) close({clearHash: true});
+    let count = 0;
+    for (const entry of entries) {
+      entry.hidden = !accepts(entry);
+      if (!entry.hidden) count++;
+    }
+    for (const button of filterButtons) {
+      button.setAttribute("aria-pressed", String(button.dataset.writingFilter === group));
+    }
+    status.textContent = count === 1 ? "1 writing sample" : count + " writing samples";
+    placePanel();
+  }
+
+  for (const entry of entries) {
+    const disclosure = entry.querySelector(".writing-preview");
+    if (!disclosure) continue;
+    const title = entry.querySelector(".writing-title").textContent;
+    const panel = document.createElement("section");
+    panel.className = "writing-panel";
+    panel.id = entry.id + "-panel";
+    panel.hidden = true;
+    const heading = document.createElement("h2");
+    heading.id = entry.id + "-expanded";
+    heading.tabIndex = -1;
+    heading.textContent = title;
+    panel.setAttribute("aria-labelledby", heading.id);
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "writing-control";
+    closeButton.textContent = "Close sample";
+    closeButton.addEventListener("click", () => close({restoreFocus: true, clearHash: true}));
+    const header = document.createElement("header");
+    header.append(heading, closeButton);
+    panel.append(header, disclosure.querySelector(".writing-detail"));
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "writing-control";
+    button.textContent = "Explore the sample";
+    button.setAttribute("aria-label", disclosure.querySelector("summary").getAttribute("aria-label"));
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", panel.id);
+    button.addEventListener("click", () => {
+      if (current?.entry === entry) close({restoreFocus: true, clearHash: true});
+      else if (location.hash === "#" + entry.id) navigate();
+      else location.hash = entry.id;
+    });
+    disclosure.replaceWith(button);
+    // Keep every aria-controls target in the document, even before it is opened.
+    gallery.append(panel);
+    samples.set(entry, {entry, button, panel, heading});
+  }
+
+  for (const button of filterButtons) {
+    button.addEventListener("click", () => filter(button.dataset.writingFilter));
+  }
+  filters.hidden = false;
+  filter("all");
+  new ResizeObserver(placePanel).observe(gallery);
+
+  return {
+    reveal(anchor) {
+      const entry = anchor?.closest("article[data-writing-group]");
+      if (entry?.hidden) filter("all");
+      if (entry) return open(samples.get(entry)) || anchor;
+      if (!anchor || anchor === view) close();
+      return anchor;
+    }
+  };
 }
 
 function showView(view, anchor, focusHeading) {
@@ -188,19 +283,14 @@ function showView(view, anchor, focusHeading) {
       else link.removeAttribute("aria-current");
     }
   }
-  if (view === writing && anchor) {
-    const sample = anchor.closest("article[data-writing-group]");
-    if (sample?.hidden) filterWriting("all");
-    const preview = sample?.querySelector(".writing-preview");
-    if (preview) preview.open = true;
-  }
   const reader = chapterReaders.get(view);
-  const destination = reader ? reader.reveal(anchor) : anchor;
+  const destination = reader ? reader.reveal(anchor)
+    : view === writing && writingReader ? writingReader.reveal(anchor) : anchor;
   if (destination && destination !== view) {
     openDisclosures(destination);
     if (reader && destination.tabIndex < 0 && !destination.hasAttribute("tabindex")) destination.tabIndex = -1;
     destination.focus({preventScroll: true});
-    if (reader) destination.scrollIntoView({block: "start", behavior: "instant"});
+    if (reader || view === writing) destination.scrollIntoView({block: "start", behavior: "instant"});
     else destination.scrollIntoView();
   } else if (focusHeading || reader) {
     if (focusHeading) view.querySelector(".view-title").focus({preventScroll: true});
