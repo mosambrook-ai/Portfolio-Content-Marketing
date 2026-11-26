@@ -19,8 +19,132 @@ for (const heading of main.querySelectorAll("[data-view-heading]")) {
   heading.replaceWith(replacement);
 }
 
+function createChapterReader(article) {
+  const bar = article.querySelector(".chapter-bar");
+  const mobile = bar.querySelector(".chapter-mobile");
+  const label = bar.querySelector("[data-chapter-label]");
+  const links = [...bar.querySelectorAll("nav a")];
+  const chapters = [...article.querySelectorAll(".case-chapter")].map(section => {
+    const heading = section.querySelector(".chapter-heading .case-section-title");
+    const panel = section.querySelector(".chapter-panel");
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "editorial-chapter-button";
+    button.setAttribute("aria-controls", panel.id);
+    const title = heading.querySelector(".editorial-chapter-title").textContent;
+    const number = heading.querySelector(".editorial-chapter-number").lastChild.textContent;
+    button.setAttribute("aria-label", "Chapter " + number + " — " + title);
+    const description = heading.querySelector(".editorial-chapter-description");
+    description.id = heading.id + "-description";
+    button.setAttribute("aria-describedby", description.id);
+    button.append(...heading.childNodes);
+    heading.append(button);
+    return {section, heading, panel, button};
+  });
+  let continuous = false;
+
+  function setOpen(chapter, open) {
+    if (!open && !chapter.panel.hidden) {
+      for (const video of chapter.panel.querySelectorAll("video")) {
+        if (!video.paused) video.pause();
+      }
+    }
+    chapter.panel.hidden = !open;
+    chapter.button.setAttribute("aria-expanded", String(open));
+  }
+
+  function updateNavigation(chapter) {
+    for (const link of links) {
+      if (link.hash === "#" + chapter?.heading.id) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    }
+    label.textContent = chapter
+      ? " / " + chapter.button.querySelector(".editorial-chapter-title").textContent
+      : "";
+    mobile.open = false;
+  }
+
+  function select(chapter) {
+    continuous = false;
+    for (const candidate of chapters) setOpen(candidate, candidate === chapter);
+    updateNavigation(chapter);
+  }
+
+  for (const chapter of chapters) {
+    chapter.button.addEventListener("click", () => {
+      if (continuous) {
+        setOpen(chapter, chapter.panel.hidden);
+      } else if (!chapter.panel.hidden) {
+        select(null);
+        if (location.hash !== "#chapter-overview") history.pushState(null, "", "#chapter-overview");
+      } else {
+        location.hash = chapter.heading.id;
+        return;
+      }
+      chapter.button.scrollIntoView({block: "start", behavior: "instant"});
+    });
+  }
+
+  article.querySelector("[data-expand-chapters]").addEventListener("click", () => {
+    updateNavigation(null);
+    continuous = true;
+    for (const chapter of chapters) setOpen(chapter, true);
+    label.textContent = " / Continuous";
+  });
+
+  article.querySelector("[data-collapse-chapters]").addEventListener("click", () => {
+    select(null);
+    if (location.hash !== "#chapter-overview") history.pushState(null, "", "#chapter-overview");
+  });
+
+  article.addEventListener("click", event => {
+    if (event.button || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const link = event.target.closest(".chapter-bar a, .chapter-end a");
+    if (link?.hash === location.hash) {
+      event.preventDefault();
+      navigate();
+    }
+  });
+
+  mobile.addEventListener("keydown", event => {
+    if (event.key === "Escape" && mobile.open) {
+      mobile.open = false;
+      mobile.querySelector("summary").focus();
+    }
+  });
+
+  article.querySelector(".chapter-actions").hidden = false;
+  article.classList.add("chapter-reader");
+  select(null);
+  return {
+    reset: () => select(null),
+    reveal(anchor) {
+      const chapter = chapters.find(candidate => candidate.section.contains(anchor));
+      select(chapter);
+      article.style.setProperty("--chapter-anchor-offset", bar.offsetHeight + 12 + "px");
+      if (anchor === chapter?.heading) return chapter.button;
+      return anchor;
+    },
+  };
+}
+
+const chapterReaders = new Map();
+for (const view of views) {
+  const article = view.querySelector(".cfe:has(.chapter-actions)");
+  if (article) chapterReaders.set(view, createChapterReader(article));
+}
+
+function openDisclosures(anchor) {
+  for (let parent = anchor.parentElement; parent && !parent.classList.contains("view"); parent = parent.parentElement) {
+    if (parent.tagName !== "DETAILS") continue;
+    const summary = parent.querySelector(":scope > summary");
+    if (!summary?.contains(anchor) || anchor.hasAttribute("data-open-disclosure")) parent.open = true;
+  }
+}
+
 function showView(view, anchor, focusHeading) {
   if (activeView !== view) {
+    chapterReaders.get(activeView)?.reset();
     const hero = view.querySelector("[data-view-hero]");
     if (hero) hero.loading = "eager";
     for (const candidate of views) {
@@ -38,12 +162,16 @@ function showView(view, anchor, focusHeading) {
       else link.removeAttribute("aria-current");
     }
   }
-  if (anchor && anchor !== view) {
-    if (anchor.hasAttribute("data-open-disclosure")) anchor.parentElement.open = true;
-    anchor.focus({preventScroll: true});
-    anchor.scrollIntoView();
-  } else if (focusHeading) {
-    view.querySelector(".view-title").focus({preventScroll: true});
+  const reader = chapterReaders.get(view);
+  const destination = reader ? reader.reveal(anchor) : anchor;
+  if (destination && destination !== view) {
+    openDisclosures(destination);
+    if (reader && destination.tabIndex < 0 && !destination.hasAttribute("tabindex")) destination.tabIndex = -1;
+    destination.focus({preventScroll: true});
+    if (reader) destination.scrollIntoView({block: "start", behavior: "instant"});
+    else destination.scrollIntoView();
+  } else if (focusHeading || reader) {
+    if (focusHeading) view.querySelector(".view-title").focus({preventScroll: true});
     window.scrollTo({top: 0, behavior: "instant"});
   }
 }

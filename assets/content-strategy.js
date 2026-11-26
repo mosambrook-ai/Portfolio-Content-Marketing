@@ -105,50 +105,6 @@ for (const pillars of document.querySelectorAll(".cs-pillars")) {
   panel.hidden = false;
 }
 
-for (const bar of document.querySelectorAll(".chapter-bar")) {
-  const mobile = bar.querySelector(".chapter-mobile");
-  const label = bar.querySelector("[data-chapter-label]");
-  const links = [...bar.querySelectorAll("nav a")];
-  const chapters = links.slice(0, links.length / 2).map(link => ({
-    link,
-    section: document.getElementById(link.hash.slice(1)).closest(".case-chapter"),
-  }));
-  let frame;
-
-  function highlightChapter() {
-    frame = undefined;
-    const limit = Math.max(144, bar.getBoundingClientRect().bottom + 28);
-    let current;
-    if (bar.getClientRects().length) {
-      for (const chapter of chapters) {
-        const bounds = chapter.section.getBoundingClientRect();
-        if (bounds.top <= limit && bounds.bottom > 0) current = chapter.link;
-      }
-    }
-    for (const link of links) {
-      if (current && link.hash === current.hash) link.setAttribute("aria-current", "location");
-      else link.removeAttribute("aria-current");
-    }
-    label.textContent = current ? " / " + current.lastChild.textContent.trim() : "";
-  }
-
-  function schedule() {
-    if (frame === undefined) frame = requestAnimationFrame(highlightChapter);
-  }
-
-  for (const link of bar.querySelectorAll("a")) link.addEventListener("click", () => { mobile.open = false; });
-  mobile.addEventListener("keydown", event => {
-    if (event.key === "Escape" && mobile.open) {
-      mobile.open = false;
-      mobile.querySelector("summary").focus();
-    }
-  });
-  window.addEventListener("scroll", schedule, {passive: true});
-  window.addEventListener("resize", schedule);
-  window.addEventListener("hashchange", schedule);
-  schedule();
-}
-
 for (const experience of document.querySelectorAll(".persona-experience")) {
   const tablist = experience.querySelector(".persona-tabs");
   const profiles = experience.querySelector(".persona-profiles");
