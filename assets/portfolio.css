@@ -677,6 +677,8 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .poetry-notes{margin-top:2.25rem;max-width:62ch}
 .poetry-note-title{font-size:clamp(1.4rem,2.6vw,2rem);margin:0 0 .65rem}
 .poetry-adaptation{margin-top:1.75rem}
-@media(min-width:52rem){
-  .poetry-reading{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+@media(min-width:44rem){
+  .poetry-reading{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);column-gap:clamp(1.5rem,4vw,3.5rem)}
+  .poetry-reading>.writing-detail-image{grid-column:2;grid-row:1;justify-self:end}
+  .poetry-reading .writing-detail-image img{max-height:32rem}
 }
