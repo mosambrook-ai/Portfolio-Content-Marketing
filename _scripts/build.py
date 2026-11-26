@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from xml.etree.ElementTree import Element, SubElement, tostring
 
+from content_strategy import render_content_strategy
 from keyword_strategy import render_keyword_strategy
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -146,7 +147,9 @@ def project_case(entry):
     content = body(entry)
     if entry.get("custom_case"):
         if "{{KEYWORD_STRATEGY}}" in content:
-            return content.replace("{{KEYWORD_STRATEGY}}", render_keyword_strategy(ROOT))
+            content = content.replace("{{KEYWORD_STRATEGY}}", render_keyword_strategy(ROOT))
+        if "{{CONTENT_STRATEGY}}" in content:
+            content = content.replace("{{CONTENT_STRATEGY}}", render_content_strategy(ROOT))
         return content
     skills = "".join(f'<li>{escape(skill)}</li>' for skill in entry["skills"])
     links = "".join(f'<li><a href="{external_url(link["url"])}">{escape(link["label"])}</a></li>'

@@ -1,0 +1,1011 @@
+{
+  "strategy": [
+    {
+      "area": "Positioning",
+      "decision": "Independent literary studio; words almost swallowed",
+      "evidence": "Existing brand positioning"
+    },
+    {
+      "area": "Market",
+      "decision": "UK; organic-first, solo operator",
+      "evidence": "Planning constraint"
+    },
+    {
+      "area": "Objectives",
+      "decision": "Awareness, relevant traffic, subscriptions, purchases, retention",
+      "evidence": "Proposed objectives; no results claimed"
+    },
+    {
+      "area": "Method",
+      "decision": "Connect personas, pillars, search intent and channel roles",
+      "evidence": "Personas and allocations are hypotheses"
+    },
+    {
+      "area": "Cadence",
+      "decision": "3 TikToks and 5 Pins weekly; 2 articles and 2 emails monthly",
+      "evidence": "Suggested ceiling; adapt to capacity"
+    },
+    {
+      "area": "Validation",
+      "decision": "Review GSC, TikTok, Pinterest, Fourthwall and Mailchimp monthly",
+      "evidence": "No customer survey or verified funnel yet"
+    }
+  ],
+  "personas": [
+    {
+      "name": "Literary Romantic",
+      "motivation": "Emotional connection",
+      "barrier": "Limited disposable income",
+      "content": "Poetry, films, prints, journal",
+      "channels": "TikTok; Pinterest",
+      "search": "Literary gifts; bookish gifts",
+      "share": 0.35
+    },
+    {
+      "name": "Aspiring Writer",
+      "motivation": "Creative expression",
+      "barrier": "Already owns stationery",
+      "content": "Prompts, rituals, journal, desk mat",
+      "channels": "Pinterest; Google",
+      "search": "Gifts for writers",
+      "share": 0.25
+    },
+    {
+      "name": "Cultural Reader",
+      "motivation": "Connection and representation",
+      "barrier": "Reading rather than shopping",
+      "content": "Essays, literary commentary",
+      "channels": "TikTok; Journal; email",
+      "search": "Editorial-led; no direct keyword established",
+      "share": 0.2
+    },
+    {
+      "name": "Thoughtful Gifter",
+      "motivation": "Meaningful gifting",
+      "barrier": "Price, delivery, trust",
+      "content": "Gift guides, product demonstrations",
+      "channels": "Google; Pinterest",
+      "search": "Gifts for book lovers; bookish Christmas gifts",
+      "share": 0.2
+    }
+  ],
+  "pillars": [
+    {
+      "name": "Words worth keeping",
+      "share": 0.3,
+      "objective": "Awareness",
+      "formats": "Original poetry, illustrated films",
+      "example": "Lessons in Anatomy"
+    },
+    {
+      "name": "Behind the words",
+      "share": 0.2,
+      "objective": "Engagement",
+      "formats": "Writing rituals, creative process",
+      "example": "Almost, Always design story"
+    },
+    {
+      "name": "Between the lines",
+      "share": 0.2,
+      "objective": "Editorial authority",
+      "formats": "Essays, identity, literary culture",
+      "example": "We Were Never Asking for a Revolution"
+    },
+    {
+      "name": "Objects with meaning",
+      "share": 0.2,
+      "objective": "Product discovery",
+      "formats": "Gift guides, product stories",
+      "example": "Poetry gift guide"
+    },
+    {
+      "name": "Notes from the margins",
+      "share": 0.1,
+      "objective": "Retention and subscriptions",
+      "formats": "Letters and studio updates",
+      "example": "Notes from the Margins"
+    }
+  ],
+  "matrix": [
+    {
+      "pillar": "Words worth keeping",
+      "romantic": 3,
+      "writer": 2,
+      "reader": 3,
+      "gifter": 1
+    },
+    {
+      "pillar": "Behind the words",
+      "romantic": 2,
+      "writer": 3,
+      "reader": 2,
+      "gifter": 1
+    },
+    {
+      "pillar": "Between the lines",
+      "romantic": 2,
+      "writer": 1,
+      "reader": 3,
+      "gifter": 0
+    },
+    {
+      "pillar": "Objects with meaning",
+      "romantic": 3,
+      "writer": 3,
+      "reader": 1,
+      "gifter": 3
+    },
+    {
+      "pillar": "Notes from the margins",
+      "romantic": 3,
+      "writer": 2,
+      "reader": 3,
+      "gifter": 1
+    }
+  ],
+  "journey": [
+    {
+      "stage": "Discovery",
+      "touchpoint": "TikTok poem / Pinterest gift guide",
+      "action": "Save or visit profile",
+      "kpi": "Reach / impressions"
+    },
+    {
+      "stage": "Connection",
+      "touchpoint": "Poetry or essay excerpt",
+      "action": "Share / click",
+      "kpi": "Saves / shares"
+    },
+    {
+      "stage": "Exploration",
+      "touchpoint": "Journal / collection",
+      "action": "Read or browse",
+      "kpi": "Website clicks"
+    },
+    {
+      "stage": "Consideration",
+      "touchpoint": "Product page / newsletter",
+      "action": "Subscribe or explore",
+      "kpi": "Product views / sign-ups"
+    },
+    {
+      "stage": "Conversion",
+      "touchpoint": "Store checkout",
+      "action": "Purchase",
+      "kpi": "Orders / conversion rate"
+    },
+    {
+      "stage": "Retention",
+      "touchpoint": "Newsletter / new writing",
+      "action": "Return",
+      "kpi": "Returning visitors / repeat orders"
+    }
+  ],
+  "concepts": [
+    {
+      "name": "Poetry gift guide",
+      "channel": "Pinterest",
+      "pillar": "Objects with meaning",
+      "audience": "Thoughtful Gifter",
+      "objective": "Traffic",
+      "cta": "Read the guide",
+      "keyword": "gifts for poetry lovers"
+    },
+    {
+      "name": "Almost, Always story",
+      "channel": "TikTok",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "objective": "Engagement",
+      "cta": "What would you write first?",
+      "keyword": null
+    },
+    {
+      "name": "Desk mat showcase",
+      "channel": "Pinterest",
+      "pillar": "Objects with meaning",
+      "audience": "Aspiring Writer",
+      "objective": "Product discovery",
+      "cta": "Explore the desk mat",
+      "keyword": "decorative desk mats"
+    },
+    {
+      "name": "Gifts for creative writers",
+      "channel": "Journal",
+      "pillar": "Objects with meaning",
+      "audience": "Thoughtful Gifter",
+      "objective": "Traffic",
+      "cta": "Explore the gift ideas",
+      "keyword": "gifts for creative writers"
+    },
+    {
+      "name": "Bookish Christmas gifts",
+      "channel": "Pinterest",
+      "pillar": "Objects with meaning",
+      "audience": "Thoughtful Gifter",
+      "objective": "Traffic",
+      "cta": "Read the guide",
+      "keyword": "bookish Christmas gifts"
+    },
+    {
+      "name": "December letter",
+      "channel": "Email",
+      "pillar": "Notes from the margins",
+      "audience": "Literary Romantic",
+      "objective": "Retention",
+      "cta": "Reply with what you are reading",
+      "keyword": null
+    },
+    {
+      "name": "Poetry writing prompts",
+      "channel": "Pinterest",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "objective": "Engagement",
+      "cta": "Save for your next writing session",
+      "keyword": null
+    },
+    {
+      "name": "The page you almost wrote",
+      "channel": "TikTok",
+      "pillar": "Objects with meaning",
+      "audience": "Aspiring Writer",
+      "objective": "Product discovery",
+      "cta": "Discover the journal",
+      "keyword": null
+    },
+    {
+      "name": "Journal cover details",
+      "channel": "Pinterest",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "objective": "Engagement",
+      "cta": "Save for inspiration",
+      "keyword": null
+    },
+    {
+      "name": "Writing ritual",
+      "channel": "TikTok",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "objective": "Engagement",
+      "cta": "Share your writing ritual",
+      "keyword": null
+    },
+    {
+      "name": "Burning convent quote",
+      "channel": "Pinterest",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "objective": "Traffic",
+      "cta": "Read the full essay",
+      "keyword": null
+    },
+    {
+      "name": "Lessons in Anatomy film",
+      "channel": "TikTok",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "objective": "Awareness",
+      "cta": "Share with someone who needs these words",
+      "keyword": null
+    },
+    {
+      "name": "Jellyfish poem excerpt",
+      "channel": "Pinterest",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "objective": "Awareness",
+      "cta": "Save the words",
+      "keyword": null
+    },
+    {
+      "name": "From poem to print",
+      "channel": "TikTok",
+      "pillar": "Behind the words",
+      "audience": "Literary Romantic",
+      "objective": "Engagement",
+      "cta": "Explore the artwork",
+      "keyword": null
+    },
+    {
+      "name": "Nostalgia poem",
+      "channel": "Pinterest",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "objective": "Awareness",
+      "cta": "Save this fragment",
+      "keyword": null
+    },
+    {
+      "name": "Revolution essay carousel",
+      "channel": "TikTok",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "objective": "Traffic",
+      "cta": "Read the full essay",
+      "keyword": null
+    },
+    {
+      "name": "Winter poem",
+      "channel": "Pinterest",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "objective": "Awareness",
+      "cta": "Save for later",
+      "keyword": null
+    },
+    {
+      "name": "On the things we leave unsaid",
+      "channel": "Journal",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "objective": "Traffic",
+      "cta": "Read the reflection",
+      "keyword": null
+    },
+    {
+      "name": "End of year poem",
+      "channel": "TikTok",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "objective": "Awareness",
+      "cta": "Share your favourite line",
+      "keyword": null
+    },
+    {
+      "name": "Words for next year",
+      "channel": "Email",
+      "pillar": "Notes from the margins",
+      "audience": "Cultural Reader",
+      "objective": "Retention",
+      "cta": "Reply with a writing intention",
+      "keyword": null
+    }
+  ],
+  "calendar": [
+    {
+      "date": "2026-12-01",
+      "theme": "Thoughtful giving",
+      "channel": "Pinterest",
+      "concept": "Poetry gift guide",
+      "pillar": "Objects with meaning",
+      "audience": "Thoughtful Gifter",
+      "cta": "Read the guide",
+      "keyword": "gifts for poetry lovers",
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-01",
+      "theme": "Thoughtful giving",
+      "channel": "TikTok",
+      "concept": "Almost, Always story",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "What would you write first?",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-02",
+      "theme": "Thoughtful giving",
+      "channel": "Pinterest",
+      "concept": "Desk mat showcase",
+      "pillar": "Objects with meaning",
+      "audience": "Aspiring Writer",
+      "cta": "Explore the desk mat",
+      "keyword": "decorative desk mats",
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-03",
+      "theme": "Thoughtful giving",
+      "channel": "Journal",
+      "concept": "Gifts for creative writers",
+      "pillar": "Objects with meaning",
+      "audience": "Thoughtful Gifter",
+      "cta": "Explore the gift ideas",
+      "keyword": "gifts for creative writers",
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-03",
+      "theme": "Thoughtful giving",
+      "channel": "Pinterest",
+      "concept": "Bookish Christmas gifts",
+      "pillar": "Objects with meaning",
+      "audience": "Thoughtful Gifter",
+      "cta": "Read the guide",
+      "keyword": "bookish Christmas gifts",
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-04",
+      "theme": "Thoughtful giving",
+      "channel": "TikTok",
+      "concept": "The page you almost wrote",
+      "pillar": "Objects with meaning",
+      "audience": "Aspiring Writer",
+      "cta": "Discover the journal",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-05",
+      "theme": "Thoughtful giving",
+      "channel": "Pinterest",
+      "concept": "Poetry gift guide",
+      "pillar": "Objects with meaning",
+      "audience": "Thoughtful Gifter",
+      "cta": "Read the guide",
+      "keyword": "gifts for poetry lovers",
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-06",
+      "theme": "Thoughtful giving",
+      "channel": "Email",
+      "concept": "December letter",
+      "pillar": "Notes from the margins",
+      "audience": "Literary Romantic",
+      "cta": "Reply with what you are reading",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-06",
+      "theme": "Thoughtful giving",
+      "channel": "Pinterest",
+      "concept": "Poetry writing prompts",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Save for your next writing session",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-07",
+      "theme": "Thoughtful giving",
+      "channel": "Internal",
+      "concept": "Production / review",
+      "pillar": null,
+      "audience": null,
+      "cta": "Review metrics or prepare assets",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-08",
+      "theme": "The page you almost wrote",
+      "channel": "TikTok",
+      "concept": "The page you almost wrote",
+      "pillar": "Objects with meaning",
+      "audience": "Aspiring Writer",
+      "cta": "Discover the journal",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-08",
+      "theme": "The page you almost wrote",
+      "channel": "Pinterest",
+      "concept": "Journal cover details",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Save for inspiration",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-09",
+      "theme": "The page you almost wrote",
+      "channel": "Pinterest",
+      "concept": "Poetry writing prompts",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Save for your next writing session",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-10",
+      "theme": "The page you almost wrote",
+      "channel": "Pinterest",
+      "concept": "Burning convent quote",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "cta": "Read the full essay",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-10",
+      "theme": "The page you almost wrote",
+      "channel": "TikTok",
+      "concept": "Writing ritual",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Share your writing ritual",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-11",
+      "theme": "The page you almost wrote",
+      "channel": "Pinterest",
+      "concept": "Journal cover details",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Save for inspiration",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-12",
+      "theme": "The page you almost wrote",
+      "channel": "TikTok",
+      "concept": "Almost, Always story",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "What would you write first?",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-13",
+      "theme": "The page you almost wrote",
+      "channel": "Pinterest",
+      "concept": "Poetry writing prompts",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Save for your next writing session",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-13",
+      "theme": "The page you almost wrote",
+      "channel": "Pinterest",
+      "concept": "Journal cover details",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Save for inspiration",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-14",
+      "theme": "The page you almost wrote",
+      "channel": "Internal",
+      "concept": "Production / review",
+      "pillar": null,
+      "audience": null,
+      "cta": "Review metrics or prepare assets",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-15",
+      "theme": "The things we carry",
+      "channel": "TikTok",
+      "concept": "Lessons in Anatomy film",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Share with someone who needs these words",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-15",
+      "theme": "The things we carry",
+      "channel": "Pinterest",
+      "concept": "Jellyfish poem excerpt",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save the words",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-16",
+      "theme": "The things we carry",
+      "channel": "Pinterest",
+      "concept": "Nostalgia poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save this fragment",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-17",
+      "theme": "The things we carry",
+      "channel": "TikTok",
+      "concept": "From poem to print",
+      "pillar": "Behind the words",
+      "audience": "Literary Romantic",
+      "cta": "Explore the artwork",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-17",
+      "theme": "The things we carry",
+      "channel": "Pinterest",
+      "concept": "Jellyfish poem excerpt",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save the words",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-18",
+      "theme": "The things we carry",
+      "channel": "Pinterest",
+      "concept": "Winter poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save for later",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-19",
+      "theme": "The things we carry",
+      "channel": "TikTok",
+      "concept": "Revolution essay carousel",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "cta": "Read the full essay",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-20",
+      "theme": "The things we carry",
+      "channel": "Pinterest",
+      "concept": "Burning convent quote",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "cta": "Read the full essay",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-20",
+      "theme": "The things we carry",
+      "channel": "Pinterest",
+      "concept": "Nostalgia poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save this fragment",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-21",
+      "theme": "The things we carry",
+      "channel": "Internal",
+      "concept": "Production / review",
+      "pillar": null,
+      "audience": null,
+      "cta": "Review metrics or prepare assets",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-22",
+      "theme": "Words we take with us",
+      "channel": "TikTok",
+      "concept": "End of year poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Share your favourite line",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-22",
+      "theme": "Words we take with us",
+      "channel": "Pinterest",
+      "concept": "Winter poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save for later",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-23",
+      "theme": "Words we take with us",
+      "channel": "Pinterest",
+      "concept": "Burning convent quote",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "cta": "Read the full essay",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-24",
+      "theme": "Words we take with us",
+      "channel": "Journal",
+      "concept": "On the things we leave unsaid",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "cta": "Read the reflection",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-24",
+      "theme": "Words we take with us",
+      "channel": "Pinterest",
+      "concept": "Nostalgia poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save this fragment",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-25",
+      "theme": "Words we take with us",
+      "channel": "Internal",
+      "concept": "Production / review",
+      "pillar": null,
+      "audience": null,
+      "cta": "Review metrics or prepare assets",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-26",
+      "theme": "Words we take with us",
+      "channel": "Pinterest",
+      "concept": "Winter poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save for later",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-27",
+      "theme": "Words we take with us",
+      "channel": "TikTok",
+      "concept": "Revolution essay carousel",
+      "pillar": "Between the lines",
+      "audience": "Cultural Reader",
+      "cta": "Read the full essay",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-28",
+      "theme": "Words we take with us",
+      "channel": "Pinterest",
+      "concept": "Jellyfish poem excerpt",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Save the words",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-28",
+      "theme": "Words we take with us",
+      "channel": "TikTok",
+      "concept": "End of year poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Share your favourite line",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-29",
+      "theme": "Words we take with us",
+      "channel": "Email",
+      "concept": "Words for next year",
+      "pillar": "Notes from the margins",
+      "audience": "Cultural Reader",
+      "cta": "Reply with a writing intention",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-30",
+      "theme": "Words we take with us",
+      "channel": "Pinterest",
+      "concept": "Poetry writing prompts",
+      "pillar": "Behind the words",
+      "audience": "Aspiring Writer",
+      "cta": "Save for your next writing session",
+      "keyword": null,
+      "status": "Planned"
+    },
+    {
+      "date": "2026-12-31",
+      "theme": "Words we take with us",
+      "channel": "TikTok",
+      "concept": "End of year poem",
+      "pillar": "Words worth keeping",
+      "audience": "Literary Romantic",
+      "cta": "Share your favourite line",
+      "keyword": null,
+      "status": "Planned"
+    }
+  ],
+  "repurposing": [
+    {
+      "asset": "Lessons in Anatomy",
+      "tiktok": "Film / excerpt",
+      "pinterest": "Jellyfish quote pin",
+      "journal": "Poem inspiration",
+      "email": "Personal reflection",
+      "product": "Poetry print"
+    },
+    {
+      "asset": "Almost, Always",
+      "tiktok": "Product film / design story",
+      "pinterest": "Cover details / prompts",
+      "journal": "Writing ritual",
+      "email": "Studio note",
+      "product": "Journal"
+    },
+    {
+      "asset": "Revolution essay",
+      "tiktok": "Essay carousel",
+      "pinterest": "Convent quote graphic",
+      "journal": "Existing essay",
+      "email": "Editorial reflection",
+      "product": "Optional; only if relevant"
+    },
+    {
+      "asset": "Poetry gift guide",
+      "tiktok": "Gift carousel",
+      "pinterest": "Gift guide pins",
+      "journal": "Existing guide",
+      "email": "Gift recommendations",
+      "product": "Relevant products"
+    }
+  ],
+  "assets": [
+    {
+      "name": "Lessons in Anatomy film",
+      "state": "Draft film exists",
+      "action": "Review final export and captions",
+      "status": "Review"
+    },
+    {
+      "name": "Almost, Always film",
+      "state": "Storyboard / ad work exists",
+      "action": "Confirm final asset before scheduling",
+      "status": "Review"
+    },
+    {
+      "name": "Poetry gift guide",
+      "state": "Existing article",
+      "action": "Check links and delivery information",
+      "status": "Review"
+    },
+    {
+      "name": "Revolution essay",
+      "state": "Existing article and carousel",
+      "action": "Adapt excerpt and verify links",
+      "status": "Review"
+    },
+    {
+      "name": "December letters",
+      "state": "Proposed",
+      "action": "Write and test email",
+      "status": "Planned"
+    },
+    {
+      "name": "New gift guide",
+      "state": "Proposed",
+      "action": "Draft and optimise",
+      "status": "Planned"
+    },
+    {
+      "name": "Winter / year-end poetry",
+      "state": "Proposed",
+      "action": "Select or write original text",
+      "status": "Planned"
+    }
+  ],
+  "kpis": [
+    {
+      "period": "December 2026",
+      "channel": "TikTok",
+      "metric": "Views",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "TikTok Analytics",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "TikTok",
+      "metric": "Shares",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "TikTok Analytics",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "Pinterest",
+      "metric": "Outbound clicks",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "Pinterest Analytics",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "Pinterest",
+      "metric": "Saves",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "Pinterest Analytics",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "Organic search",
+      "metric": "Clicks",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "Google Search Console",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "Organic search",
+      "metric": "Impressions",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "Google Search Console",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "Email",
+      "metric": "New subscribers",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "Mailchimp / Fourthwall",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "Store",
+      "metric": "Orders",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "Fourthwall",
+      "action": "Review at month end"
+    },
+    {
+      "period": "December 2026",
+      "channel": "Store",
+      "metric": "Conversion rate",
+      "baseline": null,
+      "target": null,
+      "actual": null,
+      "source": "Fourthwall",
+      "action": "Review at month end"
+    }
+  ]
+}
