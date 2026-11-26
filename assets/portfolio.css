@@ -432,3 +432,15 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 @media(min-width:53rem){
   .creative-gallery{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(1.5rem,4vw,3.5rem);row-gap:var(--heading-space)}
 }
+
+/* Lessons in Anatomy film and storyboard */
+.anatomy-film{width:min(100%,21rem)}
+.anatomy-film video{display:block;width:100%;height:auto;aspect-ratio:9/16;background:var(--ink)}
+.anatomy-film video:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+.anatomy-links{margin:.75rem 0}
+.anatomy-transcript ol{padding-inline-start:1.35rem}
+.anatomy-transcript li+li{margin-top:.45rem}
+.creative-entry .anatomy-overview{margin:var(--content-space) 0}
+.anatomy-storyboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;list-style:none;margin:0;padding:0}
+.anatomy-storyboard li{min-width:0}
+.anatomy-storyboard img{width:100%;height:auto;aspect-ratio:9/16}
