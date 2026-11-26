@@ -69,26 +69,40 @@ for (const calendar of document.querySelectorAll(".cs-calendar")) {
 }
 
 for (const pillars of document.querySelectorAll(".cs-pillars")) {
-  const bar = pillars.querySelector(".cs-mix");
+  const chart = pillars.querySelector(".cs-donut");
+  const centre = chart.querySelector("strong");
+  const panel = pillars.querySelector(".cs-pillar-selection");
+  const segments = [...chart.querySelectorAll("[data-pillar-index]")];
   const disclosures = [...pillars.querySelectorAll('details[name="cs-pillars"]')];
-  [...bar.children].forEach((segment, index) => {
+
+  function select(index) {
     const disclosure = disclosures[index];
-    const button = document.createElement("button");
-    button.type = "button";
-    button.style.cssText = segment.style.cssText;
-    button.setAttribute("aria-label", disclosure.querySelector("summary").textContent.trim());
-    const updatePressed = () => button.setAttribute("aria-pressed", String(disclosure.open));
-    button.addEventListener("click", () => {
-      disclosure.open = !disclosure.open;
-      updatePressed();
+    const summary = disclosure.querySelector("summary");
+    centre.textContent = summary.querySelector(".cs-score").textContent;
+    for (const [i, segment] of segments.entries()) segment.classList.toggle("is-selected", i === index);
+    const heading = document.createElement("strong");
+    heading.textContent = summary.firstChild.textContent.trim();
+    panel.replaceChildren(heading, disclosure.querySelector("dl").cloneNode(true));
+  }
+
+  for (const [index, disclosure] of disclosures.entries()) {
+    disclosure.querySelector("summary").addEventListener("click", event => {
+      event.preventDefault();
+      disclosure.open = true;
+      select(index);
     });
-    disclosure.addEventListener("toggle", updatePressed);
-    updatePressed();
-    segment.replaceWith(button);
-  });
-  bar.removeAttribute("aria-hidden");
-  bar.setAttribute("role", "group");
-  bar.setAttribute("aria-label", "Proposed content mix");
+    disclosure.addEventListener("toggle", () => {
+      if (disclosure.open) select(index);
+    });
+    segments[index].addEventListener("click", () => {
+      disclosure.open = true;
+      select(index);
+    });
+  }
+  select(Math.max(0, disclosures.findIndex(item => item.open)));
+  pillars.classList.add("is-enhanced");
+  chart.hidden = false;
+  panel.hidden = false;
 }
 
 for (const bar of document.querySelectorAll(".chapter-bar")) {

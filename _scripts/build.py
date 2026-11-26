@@ -9,6 +9,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 from xml.etree.ElementTree import Element, SubElement, tostring
 
+from anatomy_feature import render_anatomy_feature
 from content_strategy import render_content_strategy
 from keyword_strategy import definition, render_keyword_strategy
 
@@ -177,6 +178,8 @@ def project_case(entry):
                 metrics = f'{poetry["volume"]:,} monthly searches and {poetry["difficulty"]:.0%} keyword difficulty'
                 fragment = fragment.replace("{{POETRY_METRICS}}", metrics)
             content = content.replace("{{" + marker + "}}", fragment)
+        if "{{ANATOMY_FEATURE}}" in content:
+            content = content.replace("{{ANATOMY_FEATURE}}", render_anatomy_feature(ROOT))
         return content
     skills = "".join(f'<li>{escape(skill)}</li>' for skill in entry["skills"])
     links = "".join(f'<li><a href="{external_url(link["url"])}">{escape(link["label"])}</a></li>'

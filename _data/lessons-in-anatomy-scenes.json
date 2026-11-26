@@ -1,0 +1,126 @@
+{
+  "title": "Lessons in Anatomy",
+  "version": "V5",
+  "runtime_seconds": 54,
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "audio": "No audio stream",
+  "timecode_note": "Scene boundaries are editorial markers rounded to the nearest second; transitions overlap.",
+  "scenes": [
+    {
+      "number": 1,
+      "title": "Above the water",
+      "start_seconds": 0,
+      "end_seconds": 6,
+      "still_seconds": 3,
+      "image": "web-assets/v5-01-horizon.webp",
+      "composition": "A small boat sits on the horizon above ridges of dark, heaving water.",
+      "movement_and_transition": "The framing holds the horizon while the waves supply motion. The horizon gives way to an underwater view.",
+      "intention": "Begin at a distance, with the boat small against the sea."
+    },
+    {
+      "number": 2,
+      "title": "Below the surface",
+      "start_seconds": 6,
+      "end_seconds": 8,
+      "still_seconds": 6.75,
+      "image": "web-assets/v5-02-descent.webp",
+      "composition": "The waterline leaves the top of the frame as the image opens into a dark underwater field.",
+      "movement_and_transition": "The viewpoint descends through the surface and the first fish emerge below the lighter water.",
+      "intention": "Make the change in viewpoint legible without breaking the journey."
+    },
+    {
+      "number": 3,
+      "title": "The shoal",
+      "start_seconds": 8,
+      "end_seconds": 14,
+      "still_seconds": 11,
+      "image": "web-assets/v5-03-shoal.webp",
+      "composition": "Small fish are distributed through the water, with the light concentrated above them.",
+      "movement_and_transition": "The shoal drifts across the frame. The jellyfish begins to emerge as the fish fall away.",
+      "intention": "Let the viewer adjust to the underwater space before introducing the central creature."
+    },
+    {
+      "number": 4,
+      "title": "The immortal jellyfish",
+      "start_seconds": 14,
+      "end_seconds": 28,
+      "still_seconds": 26,
+      "image": "web-assets/v5-04-jellyfish.webp",
+      "composition": "A rose-toned jellyfish holds the centre of dark water; “the first immortal creature” appears beneath it.",
+      "movement_and_transition": "The bell and filaments move within a held composition. The heart overlaps as the text recedes.",
+      "intention": "Give the animal time to register before turning to the poem’s question about mortality."
+    },
+    {
+      "number": 5,
+      "title": "The anatomical heart",
+      "start_seconds": 28,
+      "end_seconds": 34,
+      "still_seconds": 32,
+      "image": "web-assets/v5-05-heart.webp",
+      "composition": "The heart develops over the jellyfish before becoming the main image.",
+      "movement_and_transition": "The silhouettes overlap. The red wash then begins to carry the anatomy study into the shore.",
+      "intention": "Turn the question of immortality back towards bodily vulnerability."
+    },
+    {
+      "number": 6,
+      "title": "Return to shore",
+      "start_seconds": 34,
+      "end_seconds": 47,
+      "still_seconds": 43,
+      "image": "web-assets/v5-06-shoreline.webp",
+      "composition": "Bare feet and pale cloth emerge through the wash, with foam and reflections at the waterline.",
+      "movement_and_transition": "The anatomical study dissolves into the shoreline. Moving foam carries the held shot until paper begins to rise.",
+      "intention": "Bring the poem’s questions back to the body and give the encounter time to settle."
+    },
+    {
+      "number": 7,
+      "title": "Unfinished business",
+      "start_seconds": 47,
+      "end_seconds": 51,
+      "still_seconds": 49,
+      "image": "web-assets/v5-07-unfinished-business.webp",
+      "composition": "Paper and a soft illustrated waterline reveal the italic phrase “unfinished business”.",
+      "movement_and_transition": "The shoreline recedes behind the paper. The words then fade before the title treatment settles.",
+      "intention": "Let the unresolved phrase outlast the scene that prompted it."
+    },
+    {
+      "number": 8,
+      "title": "The studio signature",
+      "start_seconds": 51,
+      "end_seconds": 54,
+      "still_seconds": 53,
+      "image": "web-assets/v5-08-end-card.webp",
+      "composition": "The Cold Feet Editions name and tagline sit on warm paper above the remaining water motif.",
+      "movement_and_transition": "The closing composition holds through the end.",
+      "intention": "Leave the viewer with a quiet studio signature after the poem’s final fragment."
+    }
+  ],
+  "comparisons": [
+    {
+      "title": "Horizon",
+      "v2_seconds": 3,
+      "v5_seconds": 3,
+      "v2_image": "comparisons/v2-horizon-comparison.webp",
+      "v5_image": "comparisons/v5-horizon-comparison.webp",
+      "description": "V2 used a small title against a quieter horizon. V5 gives the opening to a more textured, unsettled sea. The boat remains a point of scale."
+    },
+    {
+      "title": "Jellyfish",
+      "v2_seconds": 26,
+      "v5_seconds": 26,
+      "v2_image": "comparisons/v2-jellyfish-comparison.webp",
+      "v5_image": "comparisons/v5-jellyfish-comparison.webp",
+      "description": "V2 uses a softly outlined bell and fine, straight filaments. V5 introduces a denser rose-toned study with longer curling forms, giving the viewer more to follow within the held shot."
+    },
+    {
+      "title": "Shoreline",
+      "v2_seconds": 57.5,
+      "v5_seconds": 43,
+      "v2_image": "comparisons/v2-shoreline-comparison.webp",
+      "v5_image": "comparisons/v5-shoreline-comparison.webp",
+      "description": "V2 places drawn feet against layered graphic waves. V5 brings fabric, foam and reflections into the same textured scene, making the return to the body more immediate."
+    }
+  ]
+}

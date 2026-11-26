@@ -80,17 +80,32 @@ def personas(rows):
 def pillars(rows):
     if abs(sum(row["share"] for row in rows) - 1) > 1e-9:
         raise ValueError("Content pillar shares must total 100%.")
-    bar = "".join(f'<span style="--share:{row["share"]:.0%}"></span>' for row in rows)
+    segments, offset = [], 0
+    for index, row in enumerate(rows):
+        share = row["share"] * 100
+        segments.append(
+            f'<circle cx="110" cy="110" r="83" pathLength="100" data-pillar-index="{index}" '
+            f'stroke-dasharray="{share - 0.65:g} {100 - share + 0.65:g}" stroke-dashoffset="{-offset:g}"/>'
+        )
+        offset += share
     cards = "".join(
         disclosure(
             f'{escape(row["name"])} <span class="cs-score">{row["share"]:.0%}</span>',
             facts([("What it does", PILLAR_DESCRIPTIONS[row["name"]]), ("Objective", row["objective"]), ("Formats", row["formats"]), ("Example", row["example"])]),
             "cs-pillars",
+            opened=index == 0,
             anchor="pillar-" + row["name"].lower().replace(" ", "-"),
         )
-        for row in rows
+        for index, row in enumerate(rows)
     )
-    return f'<div class="cs-pillars"><div class="cs-mix" aria-hidden="true">{bar}</div><div class="cs-disclosures">{cards}</div></div>'
+    return (
+        '<div class="cs-pillars"><div class="cs-mix-layout">'
+        '<div class="cs-donut" hidden><svg viewBox="0 0 220 220" aria-hidden="true">'
+        f'<g transform="rotate(-90 110 110)">{"".join(segments)}</g></svg>'
+        '<div class="cs-donut-center" aria-hidden="true"><strong></strong><span>Content mix</span></div></div>'
+        f'<div class="cs-disclosures cs-pillar-legend">{cards}</div></div>'
+        '<div class="cs-pillar-selection" role="region" aria-label="Selected content pillar" hidden></div></div>'
+    )
 
 
 def audience_matrix(data):
