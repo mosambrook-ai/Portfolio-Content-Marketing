@@ -155,7 +155,7 @@ def body(entry):
 def writing_sample_detail(entry, related_prefix="#"):
     sample = entry["sample"]
     extracts = []
-    for extract in sample["extracts"]:
+    for extract in sample.get("extracts", []):
         text = extract["text"]
         if sample.get("verse"):
             lines = "<br>".join(escape(line) for line in text.splitlines())
@@ -183,6 +183,26 @@ def writing_sample_detail(entry, related_prefix="#"):
                  f'{image_html(artwork)}<span class="m">View larger artwork</span></a></figure>')
     skills = ", ".join(sample["skills"])
     credits += f"<div><dt>Skills</dt><dd>{escape(skills)}</dd></div>"
+    if sample.get("stanzas"):
+        verse = []
+        for stanza in sample["stanzas"]:
+            lines = "<br>".join(f"<span>{escape(line)}</span>" for line in stanza["lines"])
+            verse.append(f'<p>{f"<em>{lines}</em>" if stanza.get("italic") else lines}</p>')
+        adaptation = ""
+        if sample.get("adaptation"):
+            adaptation = (
+                '<div class="poetry-adaptation"><h4 class="poetry-note-title" data-view-heading="3">From page to screen.</h4>'
+                f'<p>{escape(sample["adaptation"])}</p><div class="editorial-links writing-links">{related}</div></div>'
+            )
+        else:
+            source += related
+        return (
+            '<div class="writing-detail poetry-detail"><div class="poetry-reading">'
+            f'<div class="poetry-text">{"".join(verse)}</div>{image}</div>'
+            '<div class="poetry-notes"><h4 class="poetry-note-title" data-view-heading="3">Behind the words.</h4>'
+            f'<p>{escape(sample["notes"])}</p><dl class="writing-credits">{credits}</dl>'
+            f'<div class="editorial-links writing-links">{source}</div>{adaptation}</div></div>'
+        )
     return (
         '<div class="writing-detail"><div class="writing-extracts">' + "".join(extracts) + '</div>'
         f'{image}<dl class="writing-credits">{credits}</dl>'

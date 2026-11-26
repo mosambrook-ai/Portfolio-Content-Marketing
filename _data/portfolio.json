@@ -311,50 +311,87 @@
       "status": "published",
       "title": "Lessons in Anatomy",
       "category": "Creative",
-      "description": "An original poem about the sea and an immortal jellyfish, adapted into an illustrated film and a literary print with handwritten annotations.",
+      "description": "An original poem that moves from a hazy horizon and an immortal jellyfish to the salt the sea leaves on your fingertips.",
       "image": {
-        "src": "assets/images/campaigns/lessons-in-anatomy/v5-04-jellyfish.webp",
-        "alt": "Rose-toned jellyfish from the finished film against dark water",
-        "width": 450,
-        "height": 800
+        "src": "assets/images/products/anatomy-lessons-poetry-print.webp",
+        "alt": "Original Lessons in Anatomy poetry print with a hand-drawn jellyfish, handwritten lettering and ink-wash waves",
+        "width": 1000,
+        "height": 1414,
+        "srcset": "assets/images/products/anatomy-lessons-poetry-print-600w.webp 600w, assets/images/products/anatomy-lessons-poetry-print.webp 1000w",
+        "sizes": "(min-width: 44rem) 33vw, 85vw"
       },
       "external_url": "https://coldfeeteditions.store/products/lessons-in-anatomy-original-poetry-art-print",
       "sample": {
         "group": "creative",
-        "format": "Original poetry and spoken-word storytelling",
-        "publication": "Cold Feet Editions film and poetry print",
+        "format": "Original poetry",
+        "publication": "Cold Feet Editions",
         "skills": [
-          "Poetry",
-          "Visual storytelling",
-          "Writing for film"
+          "Poetic composition",
+          "Figurative language",
+          "Literary storytelling"
         ],
-        "audience": "Readers of contemporary poetry and viewers discovering the studio through illustrated short films.",
-        "objective": "Build an intimate observation around the sea, letting the natural world give shape to questions about suffering and memory.",
-        "extracts": [
-          {
-            "label": "Opening lines",
-            "text": "You sit your jaw on the horizon haze,\nlook at where boats\nfloat over deep water"
-          }
-        ],
-        "notes": "The film holds on the horizon before descending beneath the surface. The jellyfish gives the poem’s question about immortality a visual form. The adaptation extends the studio’s original writing into film and print.",
-        "source_label": "View the published poetry print",
+        "audience": "Readers of contemporary poetry and literary artwork.",
+        "objective": "Give an unresolved feeling a physical presence through the movement of the sea and the salt it leaves behind.",
+        "notes": "The poem begins at a distance, with a horizon and boats, then moves close enough for the sea to touch skin. The immortal jellyfish opens a question about what it means to endure suffering. The joke about its missing heart gives that question a darker edge. By the end, the sea asks forgiveness and the salt speaks, giving an unfinished conversation a voice.",
+        "source_label": "View the original poetry print",
         "related": [
           {
-            "label": "Watch the film and explore its production",
+            "label": "Watch the film in Chapter 05",
             "anchor": "campaign-anatomy"
           }
         ],
-        "verse": true,
-        "image": {
-          "src": "assets/images/campaigns/lessons-in-anatomy/v5-01-horizon.webp",
-          "alt": "Opening film frame showing a sailboat on the horizon",
-          "width": 450,
-          "height": 800
-        }
+        "stanzas": [
+          {
+            "lines": [
+              "You sit your jaw on the horizon haze,",
+              "look at where boats float over deep water",
+              "and think about all the fish that look up",
+              "from underneath and cry."
+            ]
+          },
+          {
+            "lines": [
+              "Scientists have just discovered",
+              "the world's first immortal jellyfish,"
+            ]
+          },
+          {
+            "lines": [
+              "You wonder if it knows it,",
+              "wonder if it knows its own agony."
+            ]
+          },
+          {
+            "lines": [
+              "You say that it's nature's last funny joke;",
+              "the first immortal creature doesn't have a  heart."
+            ]
+          },
+          {
+            "lines": [
+              "The sea creeps over your feet,",
+              "asking for forgiveness in the sound it makes as it leaves."
+            ]
+          },
+          {
+            "lines": [
+              "It turns suffering touchable,",
+              "the salt clinging to your fingertips says,"
+            ]
+          },
+          {
+            "lines": [
+              "“I think we have unfinshed business,",
+              "   and I think you know it.”"
+            ],
+            "italic": true
+          }
+        ],
+        "adaptation": "The original poem was later adapted into an illustrated short film."
       },
       "seo": {
         "title": "Lessons in Anatomy | Mollie Sambrook",
-        "description": "An original poem about the sea and an immortal jellyfish, adapted into an illustrated film and a literary print with handwritten annotations."
+        "description": "An original poem that moves from a hazy horizon and an immortal jellyfish to the salt the sea leaves on your fingertips."
       },
       "dedicated": false
     },
@@ -364,44 +401,84 @@
       "status": "published",
       "title": "A Whole Lungful of Nostalgia",
       "category": "Creative",
-      "description": "An original poem about memory, distance and home, adapted into a literary print where a departing steam train carries the feeling of leaving into the illustration.",
+      "description": "An original poem about memory, distance and home, told through small gestures of closeness and the sound of a departing train.",
       "image": {
-        "src": "assets/images/products/whole-lungful-of-nostalgia-black-frame.webp",
-        "alt": "Framed original poem with handwritten notes and a steam train illustration",
-        "width": 700,
-        "height": 915
+        "src": "assets/images/products/whole-lungful-of-nostalgia-poetry-print.webp",
+        "alt": "A Whole Lungful of Nostalgia poetry print with handwritten lines and a steam train in a snowy landscape",
+        "width": 909,
+        "height": 1146
       },
       "external_url": "https://coldfeeteditions.store/products/a-whole-lungful-of-nostalgia-original-poetry-art-print",
       "sample": {
         "group": "creative",
         "format": "Original poetry",
-        "publication": "The Things We Carry, Cold Feet Editions",
+        "publication": "Cold Feet Editions",
         "skills": [
-          "Poetry",
-          "Imagery",
-          "Literary adaptation"
+          "Poetic composition",
+          "Figurative language",
+          "Literary storytelling"
         ],
-        "audience": "Poetry readers drawn to work about place, memory and relationships.",
-        "objective": "Capture the intimacy of leaving a place through specific memories and ordinary details.",
-        "extracts": [
-          {
-            "label": "From the original poetry print",
-            "text": "Head on my shoulder, fold up beds,\nholding my hands between yours like a promise,\nblowing warmth back into my fingers.\nBreathing warmth back into my heart."
-          }
-        ],
-        "notes": "The print pairs memories of being close to someone with the image of a departing steam train. Its handwritten lines and drifting smoke carry the sense of departure into the artwork.",
-        "source_label": "Read the poem on the original print",
+        "audience": "Readers of contemporary poetry and literary artwork.",
+        "objective": "Capture how closeness lingers after departure through the everyday details that memory holds onto.",
+        "notes": "Short fragments gather a place and a relationship through details such as fold-up beds, cold fingers and an eyelash. The repeated warmth moves from the hands to the heart, connecting physical care with the feeling of home. The sound of the train gives way to a repeated question, as though the speaker is asking someone else to see what memory is holding in view.",
+        "source_label": "View the original poetry print",
         "related": [
           {
             "label": "See the visual identity and product design",
             "anchor": "s03"
           }
         ],
-        "verse": true
+        "stanzas": [
+          {
+            "lines": [
+              "Blankets of snow, smattering,",
+              "cross country landscape differences.",
+              "An old home. Something grown.",
+              "Intellectualising emotions."
+            ]
+          },
+          {
+            "lines": [
+              "Laughter crinkled eyes hiding worried multitudes.",
+              "Superman costume.",
+              "Not hiding anything, not really."
+            ]
+          },
+          {
+            "lines": [
+              "Head on my shoulder, fold up beds,",
+              "holding my hands between yours like a promise,",
+              "blowing warmth back into my fingers.",
+              "Breathing warmth back into my heart."
+            ]
+          },
+          {
+            "lines": [
+              "Learning that distance has nothing to do with being apart.",
+              "A whole lungfull of nostalgia.",
+              "Somewhere where love has always been on my side."
+            ]
+          },
+          {
+            "lines": [
+              "Once in a lifetime hopes. A need for closeness, always.",
+              "Hangover headaches, suns rainbow refractions.",
+              "Finding an eyelash on your cheek and using the wish for myself."
+            ]
+          },
+          {
+            "lines": [
+              "The sound of the train leaving,",
+              "Can you see it?",
+              "Can you see it?",
+              "Can you see it now?"
+            ]
+          }
+        ]
       },
       "seo": {
         "title": "A Whole Lungful of Nostalgia | Mollie Sambrook",
-        "description": "An original poem about memory, distance and home, adapted into a literary print where a departing steam train carries the feeling of leaving into the illustration."
+        "description": "An original poem about memory, distance and home, told through small gestures of closeness and the sound of a departing train."
       },
       "dedicated": false
     },

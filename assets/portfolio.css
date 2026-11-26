@@ -625,11 +625,11 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .writing-control:hover{background:var(--lime);color:#222126}
 .writing-control:focus-visible{outline:2px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px var(--lime)}
 .writing-panel{
-  grid-column:1/-1;min-width:0;padding:clamp(1.25rem,3vw,2.5rem) 0;
-  border-top:1px solid var(--ox)
+  grid-column:1/-1;min-width:0;padding:clamp(1.25rem,3vw,2.5rem) 0
 }
 .writing-panel header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.7rem 2rem}
 .writing-panel h2{font-size:clamp(1.6rem,3.3vw,2.75rem);scroll-margin-top:1rem}
+.writing-panel h2:focus-visible{outline:1px solid var(--ox);outline-offset:4px;box-shadow:none}
 .writing-detail{display:flow-root;padding:1rem 0 0;max-width:68rem}
 .writing-detail-image a{display:inline-block}
 .writing-detail-image img{display:block;max-width:100%;width:auto;height:auto}
@@ -640,7 +640,7 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 .writing-extract p:last-child{margin:0}
 .writing-verse{overflow-wrap:break-word}
 .writing-detail-image img{max-height:25rem;margin-bottom:1.5rem}
-.writing-credits{display:grid;gap:.9rem 2rem;border-block:1px solid var(--rule);padding:1rem 0;margin:1.5rem 0}
+.writing-credits{display:grid;gap:.9rem 2rem;margin:1.5rem 0}
 .writing-credits dt{color:var(--mute);font:400 .8rem/1.4 var(--m)}
 .writing-credits dd{margin:.3rem 0 0}
 .writing-links{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem}
@@ -660,10 +660,23 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
 @media(min-width:44rem){
   .writing-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:start;gap:3rem}
   .writing-gallery{--writing-columns:2}
-  .writing-panel .writing-detail:has(.writing-detail-image){
+  .writing-panel .writing-detail:not(.poetry-detail):has(.writing-detail-image){
     display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.58fr);column-gap:clamp(2rem,5vw,5rem)
   }
-  .writing-panel .writing-detail:has(.writing-detail-image)>.writing-detail-image{grid-column:2;grid-row:1/span 4}
-  .writing-panel .writing-detail:has(.writing-detail-image)>:not(.writing-detail-image){grid-column:1}
+  .writing-panel .writing-detail:not(.poetry-detail):has(.writing-detail-image)>.writing-detail-image{grid-column:2;grid-row:1/span 4}
+  .writing-panel .writing-detail:not(.poetry-detail):has(.writing-detail-image)>:not(.writing-detail-image){grid-column:1}
   .writing-credits,.contact-layout{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Poetry keeps the verse and its supporting print together. */
+.poetry-reading{display:grid;gap:1.5rem clamp(2rem,6vw,5rem);align-items:start}
+.poetry-text{min-width:0;font:400 clamp(1.06rem,1.5vw,1.23rem)/1.65 "Lora",Georgia,serif}
+.poetry-text p{margin:0 0 1.25em}
+.poetry-text p:last-child{margin-bottom:0}
+.poetry-text span{white-space:pre-wrap}
+.poetry-notes{margin-top:2.25rem;max-width:62ch}
+.poetry-note-title{font-size:clamp(1.4rem,2.6vw,2rem);margin:0 0 .65rem}
+.poetry-adaptation{margin-top:1.75rem}
+@media(min-width:52rem){
+  .poetry-reading{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
 }
