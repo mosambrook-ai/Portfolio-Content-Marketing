@@ -142,6 +142,32 @@ function openDisclosures(anchor) {
   }
 }
 
+const writing = document.getElementById("writing");
+const writingFilters = writing?.querySelector(".writing-filters");
+const writingEntries = [...(writing?.querySelectorAll("article[data-writing-group]") || [])];
+const writingStatus = writing?.querySelector(".writing-results");
+const filterButtons = [...(writingFilters?.querySelectorAll("button") || [])];
+
+function filterWriting(group) {
+  let visible = 0;
+  for (const entry of writingEntries) {
+    entry.hidden = group !== "all" && entry.dataset.writingGroup !== group;
+    if (!entry.hidden) visible++;
+  }
+  for (const button of filterButtons) {
+    button.setAttribute("aria-pressed", String(button.dataset.writingFilter === group));
+  }
+  writingStatus.textContent = visible === 1 ? "1 writing sample" : visible + " writing samples";
+}
+
+if (writingFilters) {
+  for (const button of filterButtons) {
+    button.addEventListener("click", () => filterWriting(button.dataset.writingFilter));
+  }
+  writingFilters.hidden = false;
+  filterWriting("all");
+}
+
 function showView(view, anchor, focusHeading) {
   if (activeView !== view) {
     chapterReaders.get(activeView)?.reset();
@@ -161,6 +187,12 @@ function showView(view, anchor, focusHeading) {
       if (link.hash === "#" + current) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     }
+  }
+  if (view === writing && anchor) {
+    const sample = anchor.closest("article[data-writing-group]");
+    if (sample?.hidden) filterWriting("all");
+    const preview = sample?.querySelector(".writing-preview");
+    if (preview) preview.open = true;
   }
   const reader = chapterReaders.get(view);
   const destination = reader ? reader.reveal(anchor) : anchor;

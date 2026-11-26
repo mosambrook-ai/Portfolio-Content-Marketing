@@ -152,7 +152,66 @@ def body(entry):
     return local_file(entry["body"], "_content").read_text(encoding="utf-8").strip()
 
 
+def writing_sample_detail(entry, related_prefix="#"):
+    sample = entry["sample"]
+    extracts = []
+    for extract in sample["extracts"]:
+        text = extract["text"]
+        if sample.get("verse"):
+            lines = "<br>".join(escape(line) for line in text.splitlines())
+            quotation = f'<p class="writing-verse">{lines}</p>'
+        else:
+            quotation = "".join(f"<p>{escape(paragraph)}</p>" for paragraph in text.split("\n\n"))
+        extracts.append(
+            f'<figure class="writing-extract"><figcaption class="m">{escape(extract["label"])}</figcaption>'
+            f'<blockquote>{quotation}</blockquote></figure>'
+        )
+    credits = "".join(
+        f'<div><dt>{label}</dt><dd>{escape(sample[key])}</dd></div>'
+        for label, key in (("Format", "format"), ("Publication or project", "publication"),
+                           ("Intended audience", "audience"), ("Writing objective", "objective"))
+    )
+    source = f'<a href="{external_url(entry["external_url"])}">{escape(sample["source_label"])}</a>'
+    related = "".join(
+        f'<a href="{related_prefix}{escape(link["anchor"])}">{escape(link["label"])}</a>'
+        for link in sample["related"]
+    )
+    image = f'<figure class="writing-detail-image">{image_html(sample["image"])}</figure>' if sample.get("image") else ""
+    return (
+        '<div class="writing-detail"><div class="writing-extracts">' + "".join(extracts) + '</div>'
+        f'{image}<dl class="writing-credits">{credits}</dl>'
+        f'<p>{escape(sample["notes"])}</p><div class="editorial-links writing-links">{source}{related}</div></div>'
+    )
+
+
+def writing_sample(entry):
+    sample = entry["sample"]
+    title = escape(entry["title"])
+    skills = "".join(f'<li>{escape(skill)}</li>' for skill in sample["skills"])
+    tags = f'<ul class="skills-list writing-skills" role="list">{skills}</ul>'
+    art = f'<figure class="writing-art">{image_html(entry["image"])}</figure>' if entry.get("image") else ""
+    if entry.get("dedicated"):
+        identifier = ""
+        action = f'<p><a href="{route(entry, "writing")}">Explore the sample</a></p>'
+    else:
+        identifier = f' id="{anchor(entry, "writing")}" tabindex="-1"'
+        action = (
+            f'<details class="writing-preview"><summary aria-label="Explore the sample: {title}">Explore the sample</summary>'
+            + writing_sample_detail(entry) + '</details>'
+        )
+    return (
+        f'<article class="writing-entry" data-writing-group="{escape(sample["group"])}"{identifier}>'
+        f'<div class="writing-card"><div class="writing-copy">'
+        f'<p class="m positioning">{escape(entry["category"])} · {escape(sample["format"])}</p>'
+        f'<h3 class="writing-title" data-view-heading="2">{title}</h3>'
+        f'<p>{escape(entry["description"])}</p>{tags}</div>'
+        f'{art}</div>{action}</article>'
+    )
+
+
 def writing_feature(entry):
+    if entry.get("sample"):
+        return writing_sample(entry)
     meta = escape(entry["category"])
     if entry.get("publisher"):
         meta += " · Published by " + escape(entry["publisher"])
@@ -169,7 +228,7 @@ def writing_feature(entry):
         link = f'<p><a href="{external_url(entry["external_url"])}">Read the Essay</a></p>'
     identifier = "" if entry.get("dedicated") else f' id="{anchor(entry, "writing")}" tabindex="-1"'
     return (
-        f'<article class="essay"{identifier}>\n<p class="m">{meta}</p>\n'
+        f'<article class="essay" data-writing-group="{escape(entry.get("group", "editorial"))}"{identifier}>\n<p class="m">{meta}</p>\n'
         f'<h3 class="essay-title" data-view-heading="2">{escape(entry["title"])}</h3>'
         f'<p class="lead">{escape(entry["description"])}</p>\n{photo}{quote}{link}\n</article>'
     )
@@ -274,7 +333,12 @@ def dedicated_page(entry, content, kind, template):
     footer = re.search(r'<footer class="m">.*?</footer>', template, re.S)[0]
     if kind == "writing":
         heading = f'<header class="pg"><h1 class="view-title">{escape(entry["title"])}</h1><p class="lead">{description}</p></header>'
-        detail = body(entry) if entry.get("body") else f'<p><a href="{external_url(entry["external_url"])}">Read the original publication</a></p>'
+        if entry.get("sample"):
+            detail = writing_sample_detail(entry, related_prefix="../../#")
+        elif entry.get("body"):
+            detail = body(entry)
+        else:
+            detail = f'<p><a href="{external_url(entry["external_url"])}">Read the original publication</a></p>'
         content = f'<article>{heading}{detail}<p><a href="#writing">Back to Writing</a></p></article>'
         # Article fragments use H4/H5 for the homepage feature. Raise them here.
         content = re.sub(r'<(/?)h([45])\b', lambda m: f'<{m[1]}h{int(m[2])-2}', content)
@@ -282,12 +346,12 @@ def dedicated_page(entry, content, kind, template):
         # Shift project headings up from the index fallback hierarchy.
         content = re.sub(r'<(/?)h([2-6])\b', lambda m: f'<{m[1]}h{int(m[2])-1}', content)
         content = re.sub(r' data-view-heading="[1-5]"', "", content)
-    content = re.sub(r'href="#(home|work|writing|about|contact)"', r'href="../../#\1"', content)
+    content = re.sub(r'href="#(home|work|writing|about|contact|article-[a-z0-9-]+)"', r'href="../../#\1"', content)
     for part in ("href", "src"):
         head = head.replace(f'{part}="assets/', f'{part}="../../assets/')
         content = content.replace(f'{part}="assets/', f'{part}="../../assets/')
     content = re.sub(r'srcset="([^"]+)"', lambda m: 'srcset="' + m[1].replace("assets/", "../../assets/") + '"', content)
-    navigation = (header + footer).replace('href="#', 'href="../../#')
+    navigation = (header + footer).replace('href="#', 'href="../../#').replace('href="assets/', 'href="../../assets/')
     header, footer = navigation.split("</header>", 1)
     return (
         f'{head}</head>\n<body>\n<a class="skip" href="#app">Skip to Main Content</a>\n'

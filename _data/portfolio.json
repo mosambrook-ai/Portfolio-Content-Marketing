@@ -8,7 +8,13 @@
       "homepage_feature": {
         "subtitle": "From original poetry to an independent literary brand.",
         "description": "An independent literary and creative studio developed from the ground up, bringing together brand identity, SEO research, content strategy, e-commerce and original creative campaigns.",
-        "skills": ["Content strategy", "SEO", "Creative direction", "Brand development", "Digital marketing"],
+        "skills": [
+          "Content strategy",
+          "SEO",
+          "Creative direction",
+          "Brand development",
+          "Digital marketing"
+        ],
         "image": {
           "src": "assets/images/website/live/homepage.webp",
           "alt": "Cold Feet Editions storefront with a botanical masthead and links to the shop and studio story",
@@ -79,15 +85,359 @@
       "slug": "we-were-never-asking-for-a-revolution",
       "status": "published",
       "title": "We Were Never Asking for a Revolution",
-      "date": "",
-      "category": "Personal Essay / Cultural Commentary",
-      "publisher": "Cold Feet Editions",
-      "description": "An exploration of queer identity, self-censorship and the quiet radicalism of loving openly. The essay considers the distance between the romantic stories we tell about queer resistance and the realities that make such resistance necessary.",
-      "quotation": "There is something terribly romantic about a woman who would burn down a convent for the person she loves. There is something considerably less romantic about a world in which she had to.",
+      "category": "Editorial",
+      "description": "A personal essay on queer storytelling, self-censorship and the freedom to be ordinary.",
+      "image": {
+        "src": "assets/images/campaigns/revolution-burning-convent.webp",
+        "alt": "Two women flee hand in hand from a burning convent at night",
+        "width": 725,
+        "height": 800
+      },
       "external_url": "https://coldfeeteditions.store/pages/we-were-never-asking-for-a-revolution",
+      "sample": {
+        "group": "editorial",
+        "format": "Long-form literary essay",
+        "publication": "Cold Feet Editions Journal",
+        "skills": [
+          "Long-form editorial writing",
+          "Literary analysis",
+          "Audience engagement",
+          "Brand storytelling",
+          "Content repurposing"
+        ],
+        "audience": "Readers of queer literature, personal essays and cultural commentary.",
+        "objective": "Use the legend of Julie d’Aubigny to ask why queer love so often has to be extraordinary to be told.",
+        "extracts": [
+          {
+            "label": "From the published essay",
+            "text": "There is something terribly romantic about a woman who would burn down a convent for the person she loves. There is something considerably less romantic about a world in which she had to."
+          }
+        ],
+        "notes": "I move between the convent legend and ordinary scenes from my own life. That shift gives the essay its tension and reflects the Journal’s interest in personal writing and queer literature. The burning-convent artwork carried the opening image into the social campaign.",
+        "source_label": "Read the published essay",
+        "related": [
+          {
+            "label": "See the essay campaign",
+            "anchor": "campaign-revolution"
+          }
+        ]
+      },
       "seo": {
         "title": "We Were Never Asking for a Revolution | Mollie Sambrook",
-        "description": "A personal essay on queer identity, self-censorship and loving openly, published by Cold Feet Editions."
+        "description": "A personal essay on queer storytelling, self-censorship and the freedom to be ordinary."
+      },
+      "dedicated": false
+    },
+    {
+      "id": "poetry-gift-guide",
+      "slug": "poetry-gift-guide",
+      "status": "published",
+      "title": "10 Gift Ideas to Buy a Poetry Lover",
+      "category": "Commercial",
+      "description": "A poetry gift guide that helps readers choose a thoughtful present and discover relevant products.",
+      "image": {
+        "src": "assets/images/website/live/gift-guide-recommendations.webp",
+        "alt": "Published poetry gift guide showing a featured product and its recommendation",
+        "width": 1120,
+        "height": 526
+      },
+      "external_url": "https://coldfeeteditions.store/pages/10-literary-gift-ideas-for-poetry-book-lovers",
+      "sample": {
+        "group": "commercial",
+        "format": "SEO-led editorial article",
+        "publication": "Cold Feet Editions Journal",
+        "skills": [
+          "SEO copywriting",
+          "Search intent analysis",
+          "Content structure",
+          "Internal linking",
+          "Commercial editorial writing"
+        ],
+        "audience": "People looking for gift ideas for a poetry lover, including readers unfamiliar with the studio.",
+        "objective": "Give shoppers useful recommendations they can compare before deciding what to buy.",
+        "extracts": [
+          {
+            "label": "From the introduction",
+            "text": "Poetry lovers are notoriously difficult yet wonderfully rewarding to buy for. They rarely want disposable novelties; they crave things with depth, texture, and emotional resonance. Here are ten tactile gift ideas crafted for the sentimental and the overthinkers:"
+          }
+        ],
+        "notes": "The recovered Semrush UK research (25–26 November 2026) estimated 70 monthly searches for “poetry gifts” and 30 for “gifts for a poetry lover”, both with informational intent. The guide mixes studio products with independent recommendations. Product links give readers a next step once they recognise an idea that suits the recipient.",
+        "source_label": "Read the published gift guide",
+        "related": [
+          {
+            "label": "Explore the keyword research",
+            "anchor": "keyword-strategy"
+          },
+          {
+            "label": "View the gift guide campaign",
+            "anchor": "campaign-poetry-gifts"
+          }
+        ]
+      },
+      "seo": {
+        "title": "10 Gift Ideas to Buy a Poetry Lover | Mollie Sambrook",
+        "description": "A poetry gift guide that helps readers choose a thoughtful present and discover relevant products."
+      },
+      "dedicated": false
+    },
+    {
+      "id": "almost-always",
+      "slug": "almost-always",
+      "status": "published",
+      "title": "Almost, Always",
+      "category": "Commercial",
+      "description": "Published product copy for a poetry journal designed around the words we almost say.",
+      "image": {
+        "src": "assets/images/products/almost-always-hardback-and-open-pages.webp",
+        "alt": "The original Almost, Always journal covers and an open spread",
+        "width": 1000,
+        "height": 417
+      },
+      "external_url": "https://coldfeeteditions.store/products/almost-always-hardcover-poetry-journal-a-collection-of-almosts",
+      "sample": {
+        "group": "commercial",
+        "format": "E-commerce product copy",
+        "publication": "Cold Feet Editions shop",
+        "skills": [
+          "Product copywriting",
+          "Brand tone of voice",
+          "Purchase consideration",
+          "On-page SEO"
+        ],
+        "audience": "Poetry readers, journal writers and people choosing a gift for a writer.",
+        "objective": "Give the journal emotional meaning and answer practical questions that matter before buying.",
+        "extracts": [
+          {
+            "label": "From the published product description",
+            "text": "Some things are easier to write than to speak.\n\nAlmost, Always. is a poetry-inspired hardcover journal from Cold Feet Editions, created for the thoughts that linger, the conversations we rehearse and the feelings we haven't quite found the language for."
+          }
+        ],
+        "notes": "The opening gives the reader an emotional reason to keep a journal. The copy then describes how it can be used and gives practical details such as size and binding. The product title and body use terms such as “hardcover poetry journal” and “gift for a writer” in context.",
+        "source_label": "View the live product listing",
+        "related": [
+          {
+            "label": "See the journal campaign",
+            "anchor": "campaign-almost-always"
+          }
+        ]
+      },
+      "seo": {
+        "title": "Almost, Always | Mollie Sambrook",
+        "description": "Published product copy for a poetry journal designed around the words we almost say."
+      },
+      "dedicated": false
+    },
+    {
+      "id": "notes-from-the-margins",
+      "slug": "notes-from-the-margins",
+      "status": "published",
+      "title": "Notes from the Margins",
+      "category": "Commercial",
+      "description": "The public invitation to join the studio’s newsletter, written as an offer of literary correspondence.",
+      "image": {
+        "src": "assets/images/website/live/newsletter-branding.webp",
+        "alt": "Published Notes from the Margins sign-up introduction",
+        "width": 1120,
+        "height": 450
+      },
+      "external_url": "https://coldfeeteditions.store/#cfe-notes-title",
+      "sample": {
+        "group": "commercial",
+        "format": "Newsletter sign-up copy",
+        "publication": "Cold Feet Editions and Mailchimp",
+        "skills": [
+          "Email acquisition copy",
+          "Brand voice",
+          "Calls to action",
+          "Relationship planning"
+        ],
+        "audience": "Readers and shop visitors who want to keep in touch with the studio.",
+        "objective": "Set expectations for what subscribers will receive and give them a clear reason to sign up.",
+        "extracts": [
+          {
+            "label": "From the public sign-up",
+            "text": "A little correspondence from our corner of the literary world.\n\nOriginal poetry, essays, reading recommendations and occasional glimpses behind the pages. Delivered to your inbox when there's something worth sharing."
+          }
+        ],
+        "notes": "The invitation and “SEND ME A NOTE” button frame subscribing as correspondence. The Mailchimp sign-up was configured. This sample contains the public acquisition copy. The welcome email text and its send status are unverified.",
+        "source_label": "View the live newsletter sign-up",
+        "related": [
+          {
+            "label": "See the email marketing feature",
+            "anchor": "s07"
+          }
+        ]
+      },
+      "seo": {
+        "title": "Notes from the Margins | Mollie Sambrook",
+        "description": "The public invitation to join the studio’s newsletter, written as an offer of literary correspondence."
+      },
+      "dedicated": false
+    },
+    {
+      "id": "cold-feet-editions-website-copy",
+      "slug": "cold-feet-editions-website-copy",
+      "status": "published",
+      "title": "Cold Feet Editions website copy",
+      "category": "Commercial",
+      "description": "A selection of published copy for the homepage, studio story, collection and newsletter.",
+      "image": {
+        "src": "assets/images/website/live/homepage.webp",
+        "alt": "Live storefront with the studio positioning and navigation",
+        "width": 1120,
+        "height": 670
+      },
+      "external_url": "https://coldfeeteditions.store/",
+      "sample": {
+        "group": "commercial",
+        "format": "Brand and website copywriting",
+        "publication": "Cold Feet Editions storefront",
+        "skills": [
+          "Website copywriting",
+          "Brand positioning",
+          "Calls to action",
+          "Product discovery"
+        ],
+        "audience": "First-time visitors, poetry readers and shoppers exploring the studio.",
+        "objective": "Explain what the studio makes and help readers find a next step, whether they want to read, shop or subscribe.",
+        "extracts": [
+          {
+            "label": "Homepage positioning",
+            "text": "Original poetry, art prints and thoughtfully made trinkets"
+          },
+          {
+            "label": "About page",
+            "text": "Words have a way of staying with us."
+          },
+          {
+            "label": "The Things We Carry collection on the homepage",
+            "text": "Original poetry pressed into heavyweight paper, wearable stanzas, literary home décor and bookish gifts"
+          },
+          {
+            "label": "Product discovery button",
+            "text": "SHOP NOW"
+          },
+          {
+            "label": "Newsletter button",
+            "text": "SEND ME A NOTE"
+          }
+        ],
+        "notes": "The homepage names the offer in plain language, while the About page gives it a more reflective voice. The collection introduction describes what visitors can browse. The newsletter button keeps the correspondence theme; the shopping button makes its action explicit.",
+        "source_label": "Visit the live website",
+        "related": [
+          {
+            "label": "See the brand development chapter",
+            "anchor": "chapter-brand"
+          },
+          {
+            "label": "Explore the storefront evidence",
+            "anchor": "storefront-evidence"
+          }
+        ]
+      },
+      "seo": {
+        "title": "Cold Feet Editions website copy | Mollie Sambrook",
+        "description": "A selection of published copy for the homepage, studio story, collection and newsletter."
+      },
+      "dedicated": false
+    },
+    {
+      "id": "lessons-in-anatomy",
+      "slug": "lessons-in-anatomy",
+      "status": "published",
+      "title": "Lessons in Anatomy",
+      "category": "Creative",
+      "description": "An original poem adapted into an illustrated film and a literary art print.",
+      "image": {
+        "src": "assets/images/campaigns/lessons-in-anatomy/v5-04-jellyfish.webp",
+        "alt": "Rose-toned jellyfish from the finished film against dark water",
+        "width": 450,
+        "height": 800
+      },
+      "external_url": "https://coldfeeteditions.store/products/lessons-in-anatomy-original-poetry-art-print",
+      "sample": {
+        "group": "creative",
+        "format": "Original poetry and spoken-word storytelling",
+        "publication": "Cold Feet Editions film and poetry print",
+        "skills": [
+          "Poetry",
+          "Visual storytelling",
+          "Writing for film"
+        ],
+        "audience": "Readers of contemporary poetry and viewers discovering the studio through illustrated short films.",
+        "objective": "Build an intimate observation around the sea, letting the natural world give shape to questions about suffering and memory.",
+        "extracts": [
+          {
+            "label": "Opening lines",
+            "text": "You sit your jaw on the horizon haze,\nlook at where boats\nfloat over deep water"
+          }
+        ],
+        "notes": "The film holds on the horizon before descending beneath the surface. The jellyfish gives the poem’s question about immortality a visual form. The adaptation extends the studio’s original writing into film and print.",
+        "source_label": "View the published poetry print",
+        "related": [
+          {
+            "label": "Watch the film and explore its production",
+            "anchor": "campaign-anatomy"
+          }
+        ],
+        "verse": true,
+        "image": {
+          "src": "assets/images/campaigns/lessons-in-anatomy/v5-01-horizon.webp",
+          "alt": "Opening film frame showing a sailboat on the horizon",
+          "width": 450,
+          "height": 800
+        }
+      },
+      "seo": {
+        "title": "Lessons in Anatomy | Mollie Sambrook",
+        "description": "An original poem adapted into an illustrated film and a literary art print."
+      },
+      "dedicated": false
+    },
+    {
+      "id": "a-whole-lungful-of-nostalgia",
+      "slug": "a-whole-lungful-of-nostalgia",
+      "status": "published",
+      "title": "A Whole Lungful of Nostalgia",
+      "category": "Creative",
+      "description": "An original poem about memory, distance and home, set into a literary print with a steam train illustration.",
+      "image": {
+        "src": "assets/images/products/whole-lungful-of-nostalgia-black-frame.webp",
+        "alt": "Framed original poem with handwritten notes and a steam train illustration",
+        "width": 700,
+        "height": 915
+      },
+      "external_url": "https://coldfeeteditions.store/products/a-whole-lungful-of-nostalgia-original-poetry-art-print",
+      "sample": {
+        "group": "creative",
+        "format": "Original poetry",
+        "publication": "The Things We Carry, Cold Feet Editions",
+        "skills": [
+          "Poetry",
+          "Imagery",
+          "Literary adaptation"
+        ],
+        "audience": "Poetry readers drawn to work about place, memory and relationships.",
+        "objective": "Capture the intimacy of leaving a place through specific memories and ordinary details.",
+        "extracts": [
+          {
+            "label": "From the original poetry print",
+            "text": "Head on my shoulder, fold up beds,\nholding my hands between yours like a promise,\nblowing warmth back into my fingers.\nBreathing warmth back into my heart."
+          }
+        ],
+        "notes": "The print pairs memories of being close to someone with the image of a departing steam train. Its handwritten lines and drifting smoke carry the sense of departure into the artwork.",
+        "source_label": "Read the poem on the original print",
+        "related": [
+          {
+            "label": "See the visual identity and product design",
+            "anchor": "s03"
+          }
+        ],
+        "verse": true
+      },
+      "seo": {
+        "title": "A Whole Lungful of Nostalgia | Mollie Sambrook",
+        "description": "An original poem about memory, distance and home, set into a literary print with a steam train illustration."
       },
       "dedicated": false
     },
