@@ -117,29 +117,38 @@ def project_row(entry, number, home):
     )
 
 
-def home_projects(projects):
+def home_projects(projects, work=False):
     feature = projects[0].get("homepage_feature") if projects else None
     if feature:
         lead, *others = projects
         skills = "".join(f"<li>{escape(skill)}</li>" for skill in feature["skills"])
+        heading = ('<h3 class="editorial-title" data-view-heading="2" id="work-feature">' if work
+                   else '<h2 class="editorial-title" id="selected-work" tabindex="-1">')
+        heading_end = "</h3>" if work else "</h2>"
+        feature_id = "work-feature" if work else "selected-work"
+        description = feature.get("work_description", feature["description"]) if work else feature["description"]
         title = (
             '<div class="feature-copy">'
             '<p class="m positioning">Selected work / 01</p>'
-            f'<h2 class="editorial-title" id="selected-work" tabindex="-1">{escape(lead["title"])}</h2>'
+            f'{heading}{escape(lead["title"])}{heading_end}'
             f'<p class="lead">{escape(feature["subtitle"])}</p>'
-            f'<p>{escape(feature["description"])}</p>'
+            f'<p>{escape(description)}</p>'
             f'<p class="m">{escape(lead["timeframe"])}</p>'
             f'<ul class="skills-list feature-skills" role="list">{skills}</ul>'
-            f'<p><a href="{target(lead, "work")}">Read the complete case study</a></p></div>'
+            f'<p><a class="action action-primary" href="{target(lead, "work")}">Read the complete case study</a></p></div>'
         )
         featured_section = (
-            f'<section class="home-feature" aria-labelledby="selected-work">{title}'
+            f'<section class="home-feature" aria-labelledby="{feature_id}">{title}'
             f'<figure>{image_html(feature.get("image", lead["image"]))}</figure></section>\n'
         )
         if not others:
             return featured_section
-        other_rows = "\n".join(project_row(entry, i, True) for i, entry in enumerate(others, 2))
+        other_rows = "\n".join(project_row(entry, i, not work) for i, entry in enumerate(others, 2))
+        if work:
+            return featured_section + other_rows
         return featured_section + f'<section><h2 class="editorial-title">More work</h2>{other_rows}</section>'
+    if work:
+        return "\n".join(project_row(entry, i, False) for i, entry in enumerate(projects, 1))
     return (
         '<section aria-labelledby="selected-work">'
         '<h2 class="sh" id="selected-work" tabindex="-1">Selected work</h2>'
@@ -344,7 +353,7 @@ def dedicated_page(entry, content, kind, template):
     if not photo.startswith("assets/"):
         raise ValueError("Social image paths must start with assets/")
     local_file(photo, ".")
-    head = template.split("</head>", 1)[0]
+    head = template.split("</head>", 1)[0].replace("{{HOME_SOCIAL}}", "")
     head = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', head)
     metadata = {
         "description": description, "og:title": title, "og:description": description,
@@ -404,8 +413,15 @@ def render():
             elif kind == "work":
                 cases.append(view(entry, content))
     replacements = {
+        "HOME_SOCIAL": (
+            f'<link rel="canonical" href="{SITE}">\n<meta property="og:url" content="{SITE}">\n'
+            f'<meta property="og:image" content="{SITE}assets/images/brand/portfolio-social.jpg">\n'
+            '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+            '<meta property="og:image:alt" content="The Art of Being Noticed, Mollie Sambrook’s content marketing portfolio">\n'
+            f'<meta name="twitter:image" content="{SITE}assets/images/brand/portfolio-social.jpg">'
+        ),
         "HOME_PROJECTS": home_projects(projects),
-        "WORK_PROJECTS": "\n".join(project_row(entry, i, False) for i, entry in enumerate(projects, 1)),
+        "WORK_PROJECTS": home_projects(projects, work=True),
         "CASE_VIEWS": "\n".join(cases),
         "WRITING": "\n".join(writing_feature(entry, number) for number, entry in enumerate(writing, 1)),
         "WRITING_REDIRECTS": "\n".join(writing_redirects),

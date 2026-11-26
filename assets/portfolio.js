@@ -113,6 +113,14 @@ function createChapterReader(article) {
     }
   });
 
+  for (const campaign of article.querySelectorAll(".campaign-disclosure")) {
+    campaign.addEventListener("toggle", () => {
+      if (!campaign.open) {
+        for (const video of campaign.querySelectorAll("video")) video.pause();
+      }
+    });
+  }
+
   article.querySelector(".chapter-actions").hidden = false;
   article.classList.add("chapter-reader");
   select(null);
@@ -226,7 +234,12 @@ function createWritingReader(view) {
     closeButton.addEventListener("click", () => close({restoreFocus: true, clearHash: true}));
     const header = document.createElement("header");
     header.append(heading, closeButton);
-    panel.append(header, disclosure.querySelector(".writing-detail"));
+    const detail = disclosure.querySelector(".writing-detail");
+    const returnButton = closeButton.cloneNode();
+    returnButton.textContent = "Return to writing gallery";
+    returnButton.classList.add("writing-return");
+    returnButton.addEventListener("click", () => close({restoreFocus: true, clearHash: true}));
+    panel.append(header, detail, returnButton);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "writing-control";

@@ -8,6 +8,7 @@
       "homepage_feature": {
         "subtitle": "From original poetry to an independent literary brand.",
         "description": "An independent literary and creative studio developed from the ground up, bringing together brand identity, SEO research, content strategy, e-commerce and original creative campaigns.",
+        "work_description": "I built the brand and storefront around original poetry, then used search intent, audience hypotheses and channel planning to connect gift guides, product pages and creative campaigns.",
         "skills": [
           "Content strategy",
           "SEO",
@@ -136,10 +137,10 @@
       "category": "Commercial",
       "description": "A search-led guide for poetry gift buyers, with ten recommendations that put independent finds and relevant studio products in the same useful place.",
       "image": {
-        "src": "assets/images/website/live/gift-guide-recommendations.webp",
-        "alt": "Published poetry gift guide showing a featured product and its recommendation",
-        "width": 1120,
-        "height": 526
+        "src": "assets/images/strategy/cold-feet-editions-pinterest-pins.webp",
+        "width": 362,
+        "height": 166,
+        "alt": "Cold Feet Editions Pinterest designs for poetry gifts and literary products"
       },
       "external_url": "https://coldfeeteditions.store/pages/10-literary-gift-ideas-for-poetry-book-lovers",
       "sample": {
@@ -172,7 +173,13 @@
             "label": "View the gift guide campaign",
             "anchor": "campaign-poetry-gifts"
           }
-        ]
+        ],
+        "image": {
+          "src": "assets/images/website/live/gift-guide-recommendations.webp",
+          "alt": "Published poetry gift guide showing a featured product and its recommendation",
+          "width": 1120,
+          "height": 526
+        }
       },
       "seo": {
         "title": "10 Gift Ideas to Buy a Poetry Lover | Mollie Sambrook",
@@ -210,6 +217,10 @@
           {
             "label": "From the published product description",
             "text": "Some things are easier to write than to speak.\n\nAlmost, Always. is a poetry-inspired hardcover journal from Cold Feet Editions, created for the thoughts that linger, the conversations we rehearse and the feelings we haven't quite found the language for."
+          },
+          {
+            "label": "From the product details",
+            "text": "Size: 5.2 × 7.4 inches (approximately 13.2 × 18.8 cm)\n\nCover: Hardcover with original front and back artwork\n\nPage options: Ruled line or blank"
           }
         ],
         "notes": "The opening gives the reader an emotional reason to keep a journal. The copy then describes how it can be used and gives practical details such as size and binding. The product title and body use terms such as “hardcover poetry journal” and “gift for a writer” in context.",
