@@ -5,6 +5,17 @@
       "slug": "cold-feet-editions",
       "status": "published",
       "title": "Cold Feet Editions",
+      "homepage_feature": {
+        "subtitle": "From original poetry to an independent literary brand.",
+        "description": "An independent literary and creative studio developed from the ground up, bringing together brand identity, SEO research, content strategy, e-commerce and original creative campaigns.",
+        "skills": ["Content strategy", "SEO", "Creative direction", "Brand development", "Digital marketing"],
+        "image": {
+          "src": "assets/images/website/live/homepage.webp",
+          "alt": "Cold Feet Editions storefront with a botanical masthead and links to the shop and studio story",
+          "width": 1120,
+          "height": 670
+        }
+      },
       "case_title": "Building Cold Feet Editions",
       "legacy_hash": "case-cold-feet",
       "timeframe": "November 2026 – Present",

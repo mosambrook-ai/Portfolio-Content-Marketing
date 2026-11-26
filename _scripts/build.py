@@ -117,6 +117,37 @@ def project_row(entry, number, home):
     )
 
 
+def home_projects(projects):
+    feature = projects[0].get("homepage_feature") if projects else None
+    if feature:
+        lead, *others = projects
+        skills = "".join(f"<li>{escape(skill)}</li>" for skill in feature["skills"])
+        title = (
+            '<div class="feature-copy">'
+            '<p class="m positioning">Selected work / 01</p>'
+            f'<h2 class="editorial-title" id="selected-work" tabindex="-1">{escape(lead["title"])}</h2>'
+            f'<p class="lead">{escape(feature["subtitle"])}</p>'
+            f'<p>{escape(feature["description"])}</p>'
+            f'<p class="m">{escape(lead["timeframe"])}</p>'
+            f'<ul class="skills-list feature-skills" role="list">{skills}</ul>'
+            f'<p><a href="{target(lead, "work")}">Read the complete case study</a></p></div>'
+        )
+        featured_section = (
+            f'<section class="home-feature" aria-labelledby="selected-work">{title}'
+            f'<figure>{image_html(feature.get("image", lead["image"]))}</figure></section>\n'
+        )
+        if not others:
+            return featured_section
+        other_rows = "\n".join(project_row(entry, i, True) for i, entry in enumerate(others, 2))
+        return featured_section + f'<section><h2 class="editorial-title">More work</h2>{other_rows}</section>'
+    return (
+        '<section aria-labelledby="selected-work">'
+        '<h2 class="sh" id="selected-work" tabindex="-1">Selected work</h2>'
+        + "\n".join(project_row(entry, i, True) for i, entry in enumerate(projects, 1))
+        + "</section>"
+    )
+
+
 def body(entry):
     return local_file(entry["body"], "_content").read_text(encoding="utf-8").strip()
 
@@ -280,7 +311,7 @@ def render():
             elif kind == "work":
                 cases.append(view(entry, content))
     replacements = {
-        "HOME_PROJECTS": "\n".join(project_row(entry, i, True) for i, entry in enumerate(projects, 1)),
+        "HOME_PROJECTS": home_projects(projects),
         "WORK_PROJECTS": "\n".join(project_row(entry, i, False) for i, entry in enumerate(projects, 1)),
         "CASE_VIEWS": "\n".join(cases),
         "WRITING": "\n".join(writing_feature(entry) for entry in writing),
