@@ -1,0 +1,70 @@
+[
+  {
+    "id": "frontier",
+    "title": "Frontier",
+    "date": "9 March 2023",
+    "genre": "Queer space western",
+    "mood": "A journey into the unknown",
+    "hook": "Follow a stranger across an Earth that feels like the edge of the map.",
+    "copy": "A climate-ravaged Earth, a dangerous journey and a love story that survives the crossing. Start here for a western’s momentum and the intimacy of a queer romance.",
+    "themes": "Climate futures · Survival · Queer romance",
+    "reason": "A western built around movement, danger and connection on an unfamiliar Earth.",
+    "url": "https://www.hachette.co.uk/titles/grace-curtis/frontier/9781529390520/",
+    "cover": {
+      "width": 420,
+      "height": 630,
+      "source": "https://www.hachette.co.uk/wp-content/uploads/2025/02/hbg-title-frontier-2-17.jpg"
+    }
+  },
+  {
+    "id": "floating-hotel",
+    "title": "Floating Hotel",
+    "date": "21 March 2024",
+    "genre": "Cosy science fiction mystery",
+    "mood": "Somewhere that feels like home",
+    "hook": "Check in for a mystery. Stay for the people who keep the place running.",
+    "copy": "An ageing hotel travels from planet to planet. Its staff, guests and secrets make this an ensemble story about the places and people we call home.",
+    "themes": "Found family · Ensemble cast · Locked-room mystery",
+    "reason": "A warm ensemble mystery centred on a place people make into a home.",
+    "url": "https://www.hachette.co.uk/titles/grace-curtis/floating-hotel/9781529390582/",
+    "cover": {
+      "width": 420,
+      "height": 645,
+      "source": "https://www.hachette.co.uk/wp-content/uploads/2025/02/hbg-title-floating-hotel-5-18.jpg"
+    }
+  },
+  {
+    "id": "idolfire",
+    "title": "Idolfire",
+    "date": "13 March 2025",
+    "genre": "Sapphic fantasy adventure",
+    "mood": "A pilgrimage with a little romance",
+    "hook": "Take the long road to a city where old gods still have a claim.",
+    "copy": "Two women travel towards the ruins of an empire. Start here for a slow-burn sapphic romance that develops over the course of a long, dangerous journey.",
+    "themes": "Pilgrimage · Ancient ruins · Slow-burn romance",
+    "reason": "A travelling party, the remains of an empire and a romance that has time to unfold.",
+    "url": "https://www.hachette.co.uk/titles/grace-curtis/idolfire/9781399730624/",
+    "cover": {
+      "width": 420,
+      "height": 646,
+      "source": "https://www.hachette.co.uk/wp-content/uploads/2025/02/hbg-title-idolfire-2-26.jpg"
+    }
+  },
+  {
+    "id": "heavens-graveyard",
+    "title": "Heaven’s Graveyard",
+    "date": "18 June 2026",
+    "genre": "Sapphic archaeological fantasy mystery",
+    "mood": "A mystery buried beneath history",
+    "hook": "Dig for a legend and find a past that refuses to stay buried.",
+    "copy": "An archaeologist follows the traces of a figure others dismiss as myth. The discovery of a buried city brings old magic, political pressure and questions about whom history remembers.",
+    "themes": "Archaeology · Buried magic · Myth and memory",
+    "reason": "An excavation drives a sapphic fantasy mystery about evidence, memory and buried magic.",
+    "url": "https://www.hachette.co.uk/titles/grace-curtis/heavens-graveyard/9781399730679/",
+    "cover": {
+      "width": 420,
+      "height": 647,
+      "source": "https://www.hachette.co.uk/wp-content/uploads/2025/12/hbg-title-heavens-graveyard-84.jpg"
+    }
+  }
+]

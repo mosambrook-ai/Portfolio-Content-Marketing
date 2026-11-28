@@ -13,6 +13,7 @@ from anatomy_feature import render_anatomy_feature
 from content_strategy import render_content_strategy
 from keyword_strategy import definition, render_keyword_strategy
 from search_performance import render_search_performance
+from grace_curtis import render_grace_curtis
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://mosambrook-ai.github.io/Portfolio-Content-Marketing/"
@@ -73,7 +74,7 @@ def published_entries(entries, kind):
         required(entry, ("title", "category", "description"))
         required(dict(entry["seo"], id=entry["id"]), ("title", "description"))
         if kind == "work":
-            required(entry, ("timeframe", "body"))
+            required(entry, ("timeframe",) if entry.get("layout") == "grace-curtis" else ("timeframe", "body"))
             if not entry.get("skills"):
                 raise ValueError(f"{entry['id']}: add skills")
             image_html(entry["image"])
@@ -110,10 +111,12 @@ def target(entry, kind):
 def project_row(entry, number, home):
     attrs = "" if home else ' data-view-heading="2"'
     meta = escape(entry["category"] + ", " + entry["timeframe"])
+    skills = " · ".join(entry["skills"])
     return (
         f'<a class="row" href="{target(entry, "work")}"><span class="no m">No. {number}</span>'
         f'<span class="tx"><h3 class="project-title"{attrs}>{escape(entry["title"])}</h3>'
-        f'<span class="m">{meta}</span><span class="ln">{escape(entry["description"])}</span></span>'
+        f'<span class="m">{meta}</span><span class="ln">{escape(entry["description"])}</span>'
+        f'<span class="m project-skills">{escape(skills)}</span><span class="project-action">Read the case study →</span></span>'
         f'<span class="pw">{image_html(entry["image"])}</span></a>'
     )
 
@@ -408,6 +411,12 @@ def render():
     cases, writing_redirects, pages = [], [], {}
     for kind, entries in (("work", projects), ("writing", writing)):
         for entry in entries:
+            if kind == "work" and entry.get("layout") == "grace-curtis":
+                project_route = route(entry, kind)
+                for name, page in render_grace_curtis(ROOT, project_route, SITE).items():
+                    pages[project_route + name] = page
+                cases.append(legacy_view(entry, "", kind))
+                continue
             content = project_case(entry) if kind == "work" else ""
             if entry.get("dedicated"):
                 pages[route(entry, kind) + "index.html"] = dedicated_page(entry, content, kind, template)
@@ -422,6 +431,10 @@ def render():
             '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
             '<meta property="og:image:alt" content="The Art of Being Noticed, Mollie Sambrook’s content marketing portfolio">\n'
             f'<meta name="twitter:image" content="{SITE}assets/images/brand/portfolio-social.jpg">'
+        ),
+        "AUTHOR_SKILLS": (
+            '<a href="work/grace-curtis/#finding-the-readers">Author discovery and audience strategy</a>'
+            if any(entry["id"] == "grace-curtis" for entry in projects) else ""
         ),
         "HOME_PROJECTS": home_projects(projects),
         "WORK_PROJECTS": home_projects(projects, work=True),
@@ -438,6 +451,8 @@ def render():
             raise ValueError(f"{path}: HTML anchor IDs must be unique")
     sitemap = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
     for path in sorted(pages):
+        if '<meta name="robots" content="noindex,follow">' in pages[path]:
+            continue
         SubElement(SubElement(sitemap, "url"), "loc").text = SITE + path.removesuffix("index.html")
     pages = {path: page.replace("<!DOCTYPE html>", "<!DOCTYPE html>\n" + MARKER, 1) for path, page in pages.items()}
     pages["sitemap.xml"] = '<?xml version="1.0" encoding="UTF-8"?>\n' + tostring(sitemap, encoding="unicode") + "\n"
@@ -450,7 +465,7 @@ def main():
     args = parser.parse_args()
     pages = render()
     stale = [
-        path for folder in ("work", "writing") for path in (ROOT / folder).glob("*/index.html")
+        path for folder in ("work", "writing") for path in (ROOT / folder).glob("**/index.html")
         if path.relative_to(ROOT).as_posix() not in pages and MARKER in path.read_text(encoding="utf-8")
     ]
     if args.check:

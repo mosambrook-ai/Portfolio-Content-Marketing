@@ -778,3 +778,6 @@ img.image-unavailable{background-color:var(--paper);border:1px solid var(--rule)
   .search-chart text{font-size:19px}
   .search-tip text{font-size:13px}
 }
+
+.row .project-skills{margin-top:.65rem}
+.row .project-action{margin-top:.8rem;color:var(--ox);text-decoration:underline;text-underline-offset:.2em;font-weight:600}

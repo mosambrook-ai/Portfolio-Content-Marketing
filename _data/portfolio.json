@@ -60,14 +60,33 @@
       "dedicated": false
     },
     {
-      "no": "No. 2",
-      "title": "[Project title]",
-      "role": "[Role]",
-      "year": "[Year]",
-      "status": "draft",
-      "line": "[One line on the brief. Add a case study when ready.]",
-      "id": "project-2",
-      "slug": "project-2"
+      "id": "grace-curtis",
+      "slug": "grace-curtis",
+      "status": "published",
+      "title": "Grace Curtis",
+      "case_title": "Worlds worth getting lost in.",
+      "category": "Author marketing / Publishing / Editorial strategy",
+      "description": "Worlds worth getting lost in. An independent author discovery concept that helps new readers choose their first Grace Curtis novel.",
+      "timeframe": "November 2026 · Concept development",
+      "dedicated": true,
+      "layout": "grace-curtis",
+      "skills": [
+        "Publishing marketing",
+        "Editorial copywriting",
+        "Audience research",
+        "Reading-guide UX",
+        "SEO planning"
+      ],
+      "image": {
+        "src": "assets/grace-curtis/moorland.webp",
+        "alt": "Moorland and a stone wall at dusk",
+        "width": 1536,
+        "height": 1024
+      },
+      "seo": {
+        "title": "Worlds worth getting lost in. | Grace Curtis author discovery concept",
+        "description": "An independent author marketing case study and interactive reading guide by Mollie Sambrook."
+      }
     },
     {
       "no": "No. 3",
