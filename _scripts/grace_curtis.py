@@ -52,14 +52,6 @@ def source(title, url, claims):
     return f'<li><a href="{url}">{title}</a> · 26 November 2026 · {claims}</li>'
 
 
-def research_asset(prefix, filename, description, width, height):
-    path = prefix + "research/" + filename
-    return (f'<figure class="research-asset"><a href="{path}">'
-            f'<img src="{path}" width="{width}" height="{height}" loading="lazy" decoding="async" alt="{escape(description)}"></a>'
-            f'<figcaption>{escape(description)} · <a href="{path}">View full size</a></figcaption></figure>')
-
-
-
 def render_grace_curtis(root, route, site):
     books = json.loads((root / "_data/grace-curtis-books.json").read_text(encoding="utf-8"))
     case_assets = "../../assets/grace-curtis/"
@@ -97,81 +89,15 @@ def render_grace_curtis(root, route, site):
     ]
 
 
-    branches = [
-        ("Find your first book", ["Frontier · queer space western", "Floating Hotel · cosy space mystery",
-         "Idolfire · sapphic slow burn", "Heaven’s Graveyard · archaeological fantasy"]),
-        ("Meet Grace", ["A favourite Northumbrian walk", "What she could talk about for hours",
-         "A short interview in her own words, subject to participation and approval"]),
-        ("Explore how she writes", ["What games taught her about worldbuilding",
-         "How she builds a cast of misfits", "Real places and histories behind her worlds"]),
-        ("Bring readers to the profile", ["Book-mood carousel", "Approved interview quote over cleared moorland imagery",
-         "Search-friendly guide to Grace Curtis’s books", "Pitch to a bookseller or genre newsletter"]),
-    ]
-    branch_html = "".join(
-        f'<div class="map-branch"><h4>{heading}</h4><ul>' + "".join(f"<li>{item}</li>" for item in items) + "</ul></div>"
-        for heading, items in branches
-    )
-    mind_map = f"""
-    <section id="reader-experience" class="strategy-map"><h3>Mapping the reader experience.</h3>
-    <div class="map-hub"><p>Worlds worth getting lost in</p></div>
-    <div class="map-branches">{branch_html}</div>
-    <p>The guide helps new readers choose a book. Author and craft features give them reasons to stay, while editorial search content and proposed outreach give them ways to find the profile. The interview, carousel and outreach remain proposals.</p>
-    {research_asset(case_assets, "marketing-mind-map.webp", "Original marketing mind map showing four branches of the reader experience", 1800, 1120)}
-    </section>
-    """
-    readers = [
-        ("queer","Primary audience hypothesis","LGBTQ+ and queer SFF readers","Idolfire and Frontier",
-         "Sapphic slow burn, queer adventure and worlds where queer characters belong.",
-         "Give the guide distinct hooks for sapphic fantasy and a queer space western.",
-         "Identify specific discussions in r/QueerSFF and relevant Gay’s The Word recommendations."),
-        ("cosy","Core audience hypothesis","Cosy sci-fi and found-family readers","Floating Hotel",
-         "A place to spend time in, an ensemble cast and a mystery to unravel.",
-         "Introduce the hotel in space first, then bring in the crew and their relationships.",
-         "Locate relevant Goodreads group reads and check which themes readers discuss on The StoryGraph."),
-        ("mystery","Core audience hypothesis","Fantasy mystery readers","Heaven’s Graveyard and Idolfire",
-         "Buried cities, contested histories and worlds with secrets to uncover.",
-         "Explore a spoiler-light connection through Nivela after verifying the link and wording.",
-         "Review relevant r/Fantasy and Goodreads discussions and verify the connection with primary sources."),
-        ("gaming","Crossover audience to test","Narrative gamers who read SFF","Idolfire",
-         "Exploration, environmental storytelling and piecing together the history of a place.",
-         "Use verified interviews to explore game influences and carry the idea into contours and brass waypoints.",
-         f'<a href="{interview}">The Hodderscape Q&amp;A</a> supports the influence on Idolfire. Test whether it helps this group choose a book.'),
-    ]
-    reader_html = "".join(
-        f'<article class="reader-{accent}"><p class="meta">{status}</p><h3>{name}</h3><p class="reader-books">{books}</p>'
-        f'<ul><li><strong>What draws them in</strong> · {motivation}</li>'
-        f'<li><strong>How it shapes the profile</strong> · {design}</li>'
-        f'<li><strong>Research</strong> · {research}</li></ul></article>'
-        for accent, status, name, books, motivation, design, research in readers
-    )
-    palette = [
-        ("Midnight", "#191C32"), ("Moonlight", "#EFEDF6"), ("Twilight", "#272D49"),
-        ("Lavender", "#B8B2D5"), ("Brass", "#C29A6D"),
-    ]
-    swatches = "".join(
-        f'<li><span class="swatch" style="--swatch:{value}" aria-hidden="true"></span><strong>{name}</strong><code>{value}</code></li>'
-        for name, value in palette
-    )
-    direction = f"""
-    <section id="moonlit-moorland" class="design-direction"><h3>Moonlit Moorland: building a world around the author.</h3>
-    <p>Midnight and twilight bring a sense of dusk. Moonlight and lavender soften the page, and brass waypoints suggest a route to follow. Fine contours and dotted paths take their cues from hiking maps. Northumbrian moorland and stone walls are creative references for the design. The profile links to Curtis’s own account of her literary influences.</p>
-    {research_asset(case_assets, "moonlit-moorland.webp", "Original Moonlit Moorland moodboard showing the dusk landscape, palette, typography and layout references", 1536, 1024)}
-    <ul class="palette" aria-label="Project colour palette">{swatches}</ul>
-    <div class="type-specimen"><p class="type-headline">Fraunces</p><p>Editorial headlines with a softer literary character.</p>
-    <p class="type-body">DM Sans</p><p>Clear navigation, reading copy and research labels.</p></div>
-    <p>The palette gives approved book artwork room to carry its own colour. The profile pairs the supplied moorland artwork with the UK hardback covers.</p>
-    </section>
-    <section id="insight-to-experience" class="design-direction"><h3>From insight to experience.</h3>
-    <dl class="insight-list">
-    <div><dt>Overlapping genres · design hypothesis</dt><dd>Use the mood guide to help readers choose before comparing all four books.</dd></div>
-    <div><dt>Queer SFF · audience hypothesis</dt><dd>Give the space western and the sapphic journey distinct hooks.</dd></div>
-    <div><dt>Cosy sci-fi · audience hypothesis</dt><dd>Open with the hotel setting, then introduce the ensemble and found family.</dd></div>
-    <div><dt>Games and worldbuilding · verified influence, crossover to test</dt><dd>Link to Curtis’s published account and use contour lines and a brass waypoint as navigational motifs.</dd></div>
-    <div><dt>Northumbrian landscape · creative reference</dt><dd>Use a dusk palette and map details. Carry the supplied dusk landscape into the profile masthead.</dd></div>
-    <div><dt>Author personality · proposed editorial feature</dt><dd>Invite a short original interview and seek approval before including answers.</dd></div>
-    <div><dt>Search intent · hypothesis</dt><dd>Write descriptive book headings and an editorial guide for title and comparison queries.</dd></div>
-    </dl></section>
-    """
+    def strategy_feature(name):
+        fragment = root / "_content/cases/grace-curtis" / f"{name}.html"
+        return fragment.read_text(encoding="utf-8").replace("{{CASE_ASSETS}}", case_assets)
+
+    mind_map = strategy_feature("mind-map")
+    readers = strategy_feature("personas")
+    direction = strategy_feature("design")
+    evidence = strategy_feature("evidence")
+
     previews = ""
     desktop = root / "assets/grace-curtis/profile-desktop.jpg"
     mobile = root / "assets/grace-curtis/profile-mobile.jpg"
@@ -215,8 +141,7 @@ def render_grace_curtis(root, route, site):
     <li><strong>Tone</strong> · The proposed editorial voice is observant, warm and specific, with room for mystery.</li></ul>
     <details id="research-sources"><summary>Research source register</summary><ul class="sources">{''.join(sources)}</ul></details>""")
     case += chapter(3, "finding-the-readers", "Finding the readers", f"""
-    <p>These working audience hypotheses may overlap. Reader interviews and first-click tasks can help test them.</p><div class="reader-grid">{reader_html}</div>
-    {research_asset(case_assets, "reader-personas.webp", "Original reader persona research board showing the four proposed audience segments", 1800, 1270)}
+    {readers}
     <details id="search-intent"><summary>Preliminary search intent framework</summary>
     <ul><li><strong>Author discovery</strong> · Grace Curtis, Grace Curtis books, Grace Curtis author. Lead to the profile and bibliography.</li>
     <li><strong>Title-led</strong> · Frontier, Floating Hotel, Idolfire and Heaven’s Graveyard, qualified with the author’s name where needed. Lead to title sections and verified publisher links.</li>
@@ -236,7 +161,7 @@ def render_grace_curtis(root, route, site):
     <details id="measurement"><summary>Measurement and usability plan</summary>
     <ul><li><strong>Profile visits and referrals</strong> · Compare entrances and tagged referrals by source.</li><li><strong>Guide interaction</strong> · Record mood selections, individual book selections and outbound publisher link clicks. Treat those clicks as intent signals.</li><li><strong>Mobile usability</strong> · Ask readers to pick a book, explain how two options differ and find publisher information using the guide. Record completion, first click, hesitation and qualitative notes.</li><li><strong>Carousel engagement</strong> · Compare saves, shares and profile referrals if the campaign is published.</li><li><strong>Organic visibility</strong> · Track impressions and relevant queries only if indexing is approved.</li></ul>
     <p>Record version, date, source, device, task or event, denominator and result for future findings. Use observation first, then test copy or ordering changes.</p></details></div>""")
-    case += '</section>'
+    case += '</section>' + evidence
     case_html = page(
         "Worlds worth getting lost in. | Grace Curtis · The Art of Being Noticed",
         "An independent author-marketing case study and interactive reader discovery prototype.", case_assets,
